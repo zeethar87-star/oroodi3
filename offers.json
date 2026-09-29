@@ -1,0 +1,61 @@
+{
+  "lastUpdated": "2026-09-29T01:45:27Z",
+  "offers": [
+    {
+      "id": "snb-ihg-2026-12-03",
+      "title": "15% خصم لدى فنادق ومنتجعات IHG",
+      "description": "خصم على حجوزات IHG مع مزايا إضافية عند استخدام بطاقات الأهلي المؤهلة.",
+      "providerName": "البنك الأهلي السعودي",
+      "providerType": "bank",
+      "offerType": "discount",
+      "value": "15%",
+      "category": "travel",
+      "compatibleWith": [
+        "mastercard"
+      ],
+      "expiryDate": "2026-12-03",
+      "sourceUrl": "https://www.alahli.com/en/pages/personal-banking/credit-cards/credit-card-promotions",
+      "terms": "يسري من 15 يناير حتى 3 ديسمبر 2026. تذكر صفحة العروض خصم 15% لدى IHG Hotels & Resorts مع مشروب ترحيبي مجاني وخروج متأخر لحاملي بطاقات SNB من Mastercard.",
+      "promoCode": null,
+      "merchantName": "IHG"
+    },
+    {
+      "id": "alrajhi-sun-roll-2026-12-24",
+      "title": "20% خصم صن رول",
+      "description": "خصم على الموقع والتطبيق والفروع عند استخدام بطاقات الراجحي.",
+      "providerName": "مصرف الراجحي",
+      "providerType": "bank",
+      "offerType": "discount",
+      "value": "20%",
+      "category": "shopping",
+      "compatibleWith": [
+        "mada",
+        "visa",
+        "mastercard"
+      ],
+      "expiryDate": "2026-12-24",
+      "sourceUrl": "https://www.alrajhibank.com.sa/ar/Personal/Offers/CardsOffers/Furniture-and-Home-Appliances/Sun-Roll",
+      "terms": "يسري من 1 يناير حتى 24 ديسمبر 2026 على جميع بطاقات مصرف الراجحي عبر التطبيق والموقع الإلكتروني والفروع. لا يمكن دمجه مع أي عرض آخر، ويمكن استخدامه أكثر من مرة، مع استخدام الرمز الترويجي ARB أو إبراز بطاقة الراجحي.",
+      "promoCode": "ARB",
+      "merchantName": "صن رول"
+    },
+    {
+      "id": "snb-amazon-prime-2027-01-14",
+      "title": "أمازون برايم + 15% خصم تسوق",
+      "description": "عضوية Amazon Prime ومزايا خصم تسوق دورية عند استخدام بطاقات الأهلي من ماستركارد.",
+      "providerName": "البنك الأهلي السعودي",
+      "providerType": "bank",
+      "offerType": "discount",
+      "value": "15%",
+      "category": "shopping",
+      "compatibleWith": [
+        "mastercard"
+      ],
+      "expiryDate": "2027-01-14",
+      "sourceUrl": "https://www.alahli.com/en/pages/personal-banking/credit-cards/credit-card-promotions",
+      "terms": "يسري من 14 يناير 2026 حتى 14 يناير 2027. تذكر صفحة العروض عضوية Amazon Prime حتى 6 أشهر، وخصم 15% حتى 50 ريال كل 30 يوماً ولمدة تصل إلى 4 أشهر، عند استخدام بطاقات SNB Credit أو Debit من Mastercard.",
+      "promoCode": null,
+      "merchantName": "أمازون"
+    }
+  ]
+}

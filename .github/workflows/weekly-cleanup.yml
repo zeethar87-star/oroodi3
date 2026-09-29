@@ -1,0 +1,62 @@
+# كل خميس فجراً بتوقيت الرياض (قبل مصاريف نهاية الأسبوع):
+# ينقل المنتهي للأرشيف، يحدّث ملف الصحة، وينشر مباشرة (عملية حتمية بلا ذكاء اصطناعي).
+name: التنظيف الأسبوعي
+
+on:
+  schedule:
+    - cron: "7 3 * * 4"   # الخميس 06:07 بتوقيت الرياض
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: data-writes
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: التأكد من وجود وسم «new-offer»
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh label create new-offer --color 1B5E3F --description "بلاغ عرض جديد للأتمتة" --force
+
+      - name: نقل المنتهي للأرشيف
+        run: python scripts/cleanup_expired.py
+
+      - name: فحص
+        run: python scripts/validate.py
+
+      - name: حفظ التغييرات
+        run: |
+          git config user.name "oroodi-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add offers.json index.html data/
+          if git diff --cached --quiet; then
+            echo "لا تغييرات"
+          else
+            git commit -m "تنظيف أسبوعي: $(date -u +%F)"
+            git push
+          fi
+
+      - name: تنبيه لو العروض قليلة
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          COUNT=$(python -c "import json;print(json.load(open('data/health.json',encoding='utf-8'))['activeOffers'])")
+          if [ "$COUNT" -lt 10 ]; then
+            TITLE="تنبيه: العروض السارية قليلة"
+            EXISTING=$(gh issue list --state open --search "in:title $TITLE" --json number --jq '.[0].number')
+            BODY="عدد العروض السارية الآن: $COUNT. الموقع يحتاج إضافة عروض — افتح بلاغ «عرض جديد» والصق رابط صفحة قائمة عروض من موقع بنك."
+            if [ -n "$EXISTING" ]; then gh issue comment "$EXISTING" --body "$BODY"; else gh issue create --title "$TITLE" --body "$BODY"; fi
+          fi

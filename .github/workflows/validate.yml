@@ -1,0 +1,45 @@
+# حارس الجودة: يمنع دمج أي تعديل يكسر السكيما أو القاموس أو يكسر جافاسكربت الصفحة.
+name: فحص الجودة
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - "offers.json"
+      - "merchants.json"
+      - "index.html"
+      - "scripts/**"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: فحص البيانات والقاموس والبيانات الاحتياطية
+        run: python scripts/validate.py
+
+      - name: فحص صياغة جافاسكربت الصفحة
+        run: |
+          python - <<'PY'
+          import re, pathlib
+          html = pathlib.Path("index.html").read_text(encoding="utf-8")
+          scripts = re.findall(r"<script(?![^>]*\bsrc=)[^>]*>(.*?)</script>", html, re.S)
+          pathlib.Path("/tmp/inline.js").write_text("\n;\n".join(scripts), encoding="utf-8")
+          for bad in ["kaspersky", "cdn.tailwindcss.com", "data-signup-google"]:
+              assert bad not in html, f"عنصر محظور رجع للصفحة: {bad}"
+          PY
+          node --check /tmp/inline.js

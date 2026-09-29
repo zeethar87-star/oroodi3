@@ -1,0 +1,27 @@
+name: "🎁 عرض جديد"
+description: "الصق رابط صفحة عرض رسمية (أو صفحة قائمة عروض كاملة) والأتمتة تستخرج الباقي وتفتح لك طلب دمج للمراجعة"
+title: "عرض جديد"
+labels: ["new-offer"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **كيف تشتغل؟** تلصق رابطاً رسمياً من موقع البنك أو المحفظة ← الأتمتة تقرأ الصفحة وتستخرج كل العروض فيها ← يوصلك طلب دمج فيه جدول بالعروض ← تضغط **Merge** فتظهر في الموقع.
+        صفحة قائمة عروض كاملة أفضل من عرض واحد: رابط واحد قد يضيف عشرين عرضاً.
+  - type: textarea
+    id: links
+    attributes:
+      label: "روابط العروض"
+      description: "رابط أو أكثر، كل رابط في سطر. من المواقع الرسمية فقط (لا مواقع كوبونات ولا حسابات تواصل اجتماعي)."
+      placeholder: "https://www.alrajhibank.com.sa/ar/personal/offers"
+    validations:
+      required: true
+  - type: textarea
+    id: pasted
+    attributes:
+      label: "نص العرض (اختياري)"
+      description: "لو الأتمتة قالت لك إن الصفحة محجوبة، انسخ نص العرض من الصفحة والصقه هنا كما هو، ثم احفظ التعديل."
+  - type: textarea
+    id: notes
+    attributes:
+      label: "ملاحظات (اختياري)"

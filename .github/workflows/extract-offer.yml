@@ -1,0 +1,84 @@
+# عند فتح بلاغ "عرض جديد" (أو تعديله) من صاحب المستودع فقط:
+# يستخرج العروض، يفحصها حتمياً، ويفتح طلب دمج للمراجعة — لا ينشر مباشرة أبداً.
+name: استخراج عرض من بلاغ
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: extract-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  extract:
+    # التشغيل مقصور على المالك: أي شخص آخر يفتح بلاغاً لن يشغّل النموذج على حسابك
+    if: >-
+      github.event.issue.user.login == github.repository_owner &&
+      github.event.issue.state == 'open' &&
+      (contains(github.event.issue.labels.*.name, 'new-offer') || startsWith(github.event.issue.title, 'عرض جديد'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: استخراج وفحص ودمج
+        id: extract
+        working-directory: scripts
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OROODI_MODEL: ${{ vars.OROODI_MODEL }}
+          REPORT_PATH: ${{ runner.temp }}/report.md
+        run: python extract_offers.py
+
+      - name: فحص نهائي قبل فتح الطلب
+        if: steps.extract.outputs.status == 'changed'
+        run: python scripts/validate.py
+
+      - name: فتح طلب الدمج
+        id: pr
+        if: steps.extract.outputs.status == 'changed'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: offers/issue-${{ github.event.issue.number }}
+          commit-message: "عروض جديدة من البلاغ #${{ github.event.issue.number }}"
+          title: "عروض جديدة من البلاغ #${{ github.event.issue.number }}"
+          body-path: ${{ runner.temp }}/report.md
+          labels: new-offer
+          add-paths: |
+            offers.json
+            merchants.json
+            index.html
+
+      - name: الرد على البلاغ
+        if: always() && steps.extract.outputs.status != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATUS: ${{ steps.extract.outputs.status }}
+          PR_URL: ${{ steps.pr.outputs.pull-request-url }}
+        run: |
+          {
+            case "$STATUS" in
+              changed)   echo "✅ جهّزت طلب الدمج: $PR_URL — راجعه واضغط Merge للنشر."; echo; cat "$RUNNER_TEMP/report.md" ;;
+              no_change) echo "ℹ️ ما لقيت عروضاً جديدة أو تحديثات مقبولة في الروابط دي."; echo; cat "$RUNNER_TEMP/report.md" ;;
+              *)         cat "$RUNNER_TEMP/report.md" ;;
+            esac
+          } > "$RUNNER_TEMP/comment.md"
+          gh issue comment ${{ github.event.issue.number }} --body-file "$RUNNER_TEMP/comment.md"
+
+      - name: إبلاغ عند الفشل
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --body "❌ الأتمتة وقعت بخطأ ومفيش أي تغيير اتنشر. افتح تبويب Actions وشوف السجل: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

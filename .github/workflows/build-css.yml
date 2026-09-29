@@ -1,0 +1,32 @@
+# يعيد بناء assets/tailwind.css تلقائياً كلما تغيّرت index.html،
+# عشان أي وكيل يضيف كلاس Tailwind جديد ميكسرش الشكل.
+name: بناء CSS
+
+on:
+  push:
+    branches: [main]
+    paths: ["index.html", "assets/tailwind.input.css"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-writes
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npx --yes tailwindcss@3.4.17 -i assets/tailwind.input.css -o assets/tailwind.css --content ./index.html --minify
+      - run: |
+          git config user.name "oroodi-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/tailwind.css
+          git diff --cached --quiet || (git commit -m "إعادة بناء CSS" && git push)

@@ -1,0 +1,32 @@
+{
+  "lastCheck": "2026-09-29T01:45:27Z",
+  "checkedDateRiyadh": "2026-09-29",
+  "activeOffers": 3,
+  "removedThisRun": [
+    "snb-keeta-2026-05-31",
+    "snb-reef-perfumes-2026-07-02",
+    "snb-hungerstation-2026-06-30",
+    "albilad-agio-2026-06-22",
+    "sab-urth-caffe-2026-06-22",
+    "sab-aghatti-2026-06-22",
+    "alrajhi-restaurants-food-delivery-2026-05-31",
+    "alrajhi-mr-chow-2026-07-01",
+    "alrajhi-il-baretto-2026-07-01"
+  ],
+  "withMerchant": 3,
+  "nextToExpire": [
+    {
+      "id": "snb-ihg-2026-12-03",
+      "expiryDate": "2026-12-03"
+    },
+    {
+      "id": "alrajhi-sun-roll-2026-12-24",
+      "expiryDate": "2026-12-24"
+    },
+    {
+      "id": "snb-amazon-prime-2027-01-14",
+      "expiryDate": "2027-01-14"
+    }
+  ],
+  "warning": "أقل من 10 عروض سارية — الموقع يحتاج إضافة عروض جديدة"
+}

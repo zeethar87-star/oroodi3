@@ -1,0 +1,170 @@
+{
+  "offers": [
+    {
+      "id": "snb-keeta-2026-05-31",
+      "title": "25% خصم كيتا كل خميس",
+      "description": "خصم أسبوعي على طلبات Keeta عند الدفع ببطاقات الأهلي المؤهلة.",
+      "providerName": "البنك الأهلي السعودي",
+      "providerType": "bank",
+      "offerType": "discount",
+      "value": "25%",
+      "category": "dining",
+      "compatibleWith": [
+        "mastercard"
+      ],
+      "expiryDate": "2026-05-31",
+      "sourceUrl": "https://www.alahli.com/en/pages/personal-banking/credit-cards/credit-card-promotions",
+      "terms": "يسري كل خميس من 2 أبريل إلى 31 مايو 2026. مذكور على صفحة عروض بطاقات SNB لبطاقات SNB Credit وLAK من Mastercard.",
+      "promoCode": null,
+      "merchantName": "كيتا",
+      "_archivedOn": "2026-09-29"
+    },
+    {
+      "id": "snb-reef-perfumes-2026-07-02",
+      "title": "15% خصم لدى ريف للعطور",
+      "description": "خصم على مشتريات Reef Perfumes عند استخدام بطاقات الأهلي من ماستركارد.",
+      "providerName": "البنك الأهلي السعودي",
+      "providerType": "bank",
+      "offerType": "discount",
+      "value": "15%",
+      "category": "shopping",
+      "compatibleWith": [
+        "mastercard"
+      ],
+      "expiryDate": "2026-07-02",
+      "sourceUrl": "https://www.alahli.com/en/pages/personal-banking/credit-cards/credit-card-promotions",
+      "terms": "يسري من 29 يناير حتى 2 يوليو 2026 عند الدفع ببطاقات SNB Credit أو Mada أو LAK من Mastercard، أو باستخدام الرمز SNB15 بحسب صفحة العرض.",
+      "promoCode": "SNB15",
+      "merchantName": "ريف للعطور",
+      "_archivedOn": "2026-09-29"
+    },
+    {
+      "id": "snb-hungerstation-2026-06-30",
+      "title": "30% خصم هنقرستيشن كل ثلاثاء",
+      "description": "خصم أسبوعي على طلبات Hungerstation عند استخدام بطاقات الأهلي الائتمانية المؤهلة.",
+      "providerName": "البنك الأهلي السعودي",
+      "providerType": "bank",
+      "offerType": "discount",
+      "value": "30%",
+      "category": "dining",
+      "compatibleWith": [
+        "mastercard"
+      ],
+      "expiryDate": "2026-06-30",
+      "sourceUrl": "https://www.alahli.com/en/pages/personal-banking/credit-cards/credit-card-promotions",
+      "terms": "يسري من 10 فبراير حتى 30 يونيو 2026 كل يوم ثلاثاء، ومذكور على صفحة العروض أنه مخصص لبطاقات SNB الائتمانية من Mastercard.",
+      "promoCode": null,
+      "merchantName": "هنقرستيشن",
+      "_archivedOn": "2026-09-29"
+    },
+    {
+      "id": "albilad-agio-2026-06-22",
+      "title": "20% خصم في مطعم أجيو - الرياض",
+      "description": "خصم في فروع الرياض لمطعم أجيو عند الدفع ببطاقات بنك البلاد الائتمانية.",
+      "providerName": "بنك البلاد",
+      "providerType": "bank",
+      "offerType": "discount",
+      "value": "20%",
+      "category": "dining",
+      "compatibleWith": [
+        "mada",
+        "apple_pay"
+      ],
+      "expiryDate": "2026-06-22",
+      "sourceUrl": "https://www.bankalbilad.com/ar/personal/cards/offers/Pages/%D9%85%D8%B7%D8%B9%D9%85-%D8%A7%D8%AC%D9%8A%D9%88-.aspx",
+      "terms": "ساري حتى 22 يونيو 2026 من الأحد إلى الخميس من 1 ظهراً إلى 6 مساءً فقط. لبطاقات بنك البلاد الائتمانية فقط، والصفحة تذكر قبول Apple Pay أو Mada Pay، ولا يسري في العطل أو الفعاليات الخاصة.",
+      "promoCode": null,
+      "merchantName": "أجيو",
+      "_archivedOn": "2026-09-29"
+    },
+    {
+      "id": "sab-urth-caffe-2026-06-22",
+      "title": "15% خصم إرث كافيه",
+      "description": "خصم على الطلبات داخل المطعم في فروع مختارة عند الدفع ببطاقات الأول المؤهلة.",
+      "providerName": "الأول",
+      "providerType": "bank",
+      "offerType": "discount",
+      "value": "15%",
+      "category": "dining",
+      "compatibleWith": [
+        "mada"
+      ],
+      "expiryDate": "2026-06-22",
+      "sourceUrl": "https://www.sab.com/ar/personal/compare-credit-cards/credit-card-special-offers/dining-groceries/urth-caffe-tc/",
+      "terms": "يسري من 22 يونيو 2025 إلى 22 يونيو 2026 من الأحد إلى الخميس، 7 صباحاً إلى 6 مساءً، داخل المطعم فقط في الرياض وجدة والخبر. العرض لبطاقات الأول الائتمانية ومدى المصرفية، ولا يسري عند الدفع عبر Apple Pay أو Mada Pay أو Samsung Pay.",
+      "promoCode": null,
+      "merchantName": "إرث كافيه",
+      "_archivedOn": "2026-09-29"
+    },
+    {
+      "id": "sab-aghatti-2026-06-22",
+      "title": "20% خصم آغاتي",
+      "description": "خصم لدى آغاتي عند الدفع ببطاقات الأول المؤهلة مع حد أدنى للإنفاق.",
+      "providerName": "الأول",
+      "providerType": "bank",
+      "offerType": "discount",
+      "value": "20%",
+      "category": "dining",
+      "compatibleWith": [
+        "mada"
+      ],
+      "expiryDate": "2026-06-22",
+      "sourceUrl": "https://www.sab.com/ar/personal/compare-credit-cards/credit-card-special-offers/dining-groceries/aghatti-tc/",
+      "terms": "يسري من 22 يونيو 2025 إلى 22 يونيو 2026. الحد الأدنى 150 ريال، والصفحة تذكر أنه متاح لبطاقات الأول الائتمانية ومدى المصرفية فقط، ولا يسري عند الدفع عبر Apple Pay أو Mada Pay أو Samsung Pay.",
+      "promoCode": null,
+      "merchantName": "آغاتي",
+      "_archivedOn": "2026-09-29"
+    },
+    {
+      "id": "alrajhi-restaurants-food-delivery-2026-05-31",
+      "title": "25% كاش باك على المطاعم وتطبيقات التوصيل",
+      "description": "كاش باك للعملاء المؤهلين من بطاقات الراجحي الائتمانية على إنفاق المطاعم والتوصيل.",
+      "providerName": "مصرف الراجحي",
+      "providerType": "bank",
+      "offerType": "cashback",
+      "value": "25%",
+      "category": "dining",
+      "compatibleWith": [],
+      "expiryDate": "2026-05-31",
+      "sourceUrl": "https://www.alrajhibank.com.sa/ar/Personal/Offers/CardsOffers/Others/Restaurants-and-Food-delivery",
+      "terms": "يسري من 1 مايو إلى 31 مايو 2026 بحد أقصى 100 ريال، وحد أدنى 50 ريال للعملية. العرض فقط لفئة مختارة من حاملي بطاقات الراجحي الائتمانية الذين تم إشعارهم مباشرة، ولا يشمل المحافظ الإلكترونية أو العمليات الملغاة أو المستردة.",
+      "promoCode": null,
+      "merchantName": null,
+      "_archivedOn": "2026-09-29"
+    },
+    {
+      "id": "alrajhi-mr-chow-2026-07-01",
+      "title": "20% خصم مطاعم مستر تشاو",
+      "description": "خصم غداء في MR Chow عند استخدام بطاقات الراجحي الائتمانية المؤهلة.",
+      "providerName": "مصرف الراجحي",
+      "providerType": "bank",
+      "offerType": "discount",
+      "value": "20%",
+      "category": "dining",
+      "compatibleWith": [],
+      "expiryDate": "2026-07-01",
+      "sourceUrl": "https://www.alrajhibank.com.sa/ar/Personal/Offers/CardsOffers/Food-and-Beverage/CHOW",
+      "terms": "ساري حتى 1 يوليو 2026 لبطاقات بلاتينيوم وسيجنتشر وإنفينيت وبلاك الائتمانية. الخصم من الأحد إلى الخميس من 1 ظهراً إلى 6 مساءً، مع حجز مسبق، بحد أقصى 5 أشخاص، ومن قائمة الطعام الرئيسية فقط.",
+      "promoCode": null,
+      "merchantName": "مستر تشاو",
+      "_archivedOn": "2026-09-29"
+    },
+    {
+      "id": "alrajhi-il-baretto-2026-07-01",
+      "title": "20% خصم IL BARETTO",
+      "description": "خصم غداء لدى IL BARETTO لحاملي بطاقات الراجحي الائتمانية المؤهلة.",
+      "providerName": "مصرف الراجحي",
+      "providerType": "bank",
+      "offerType": "discount",
+      "value": "20%",
+      "category": "dining",
+      "compatibleWith": [],
+      "expiryDate": "2026-07-01",
+      "sourceUrl": "https://www.alrajhibank.com.sa/ar/Personal/Offers/CardsOffers/Food-and-Beverage/ILBARETTO-restaurants-20",
+      "terms": "ساري حتى 1 يوليو 2026 لبطاقات بلاتينيوم وسيجنتشر وإنفينيت وبلاك الائتمانية. الخصم من الأحد إلى الخميس من 1 ظهراً إلى 6 مساءً، مع حجز مسبق، بحد أقصى 5 أشخاص، ومن قائمة الطعام الرئيسية فقط.",
+      "promoCode": null,
+      "merchantName": "إل باريتو",
+      "_archivedOn": "2026-09-29"
+    }
+  ]
+}
