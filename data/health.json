@@ -1,18 +1,8 @@
 {
-  "lastCheck": "2026-09-29T01:45:27Z",
-  "checkedDateRiyadh": "2026-09-29",
+  "lastCheck": "2026-10-01T10:01:02Z",
+  "checkedDateRiyadh": "2026-10-01",
   "activeOffers": 3,
-  "removedThisRun": [
-    "snb-keeta-2026-05-31",
-    "snb-reef-perfumes-2026-07-02",
-    "snb-hungerstation-2026-06-30",
-    "albilad-agio-2026-06-22",
-    "sab-urth-caffe-2026-06-22",
-    "sab-aghatti-2026-06-22",
-    "alrajhi-restaurants-food-delivery-2026-05-31",
-    "alrajhi-mr-chow-2026-07-01",
-    "alrajhi-il-baretto-2026-07-01"
-  ],
+  "removedThisRun": [],
   "withMerchant": 3,
   "nextToExpire": [
     {
