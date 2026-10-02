@@ -1,0 +1,45 @@
+# سبر sitemap الراجحي: هل يتسحب من نطاق GitHub Actions؟ —
+# يشغّل يدويًا فقط (workflow_dispatch)، بلا مفتاح AI، بلا جافاسكربت، بلا أي التفاف.
+# أصغر تجربة قبل تثبيت قناة «كشف الجديد» الأسبوعية على Actions (كارت t_3c0a6978).
+name: سبر sitemap الراجحي
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue-number:
+        description: 'رقم بلاغ لنشر الملخص فيه (اختياري — اتركه فارغًا لتخطي التعليق)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: probe-sitemap
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: سحب sitemap.xml وقياسه من هذا النطاق
+        env:
+          PROBE_ISSUE_NUMBER: ${{ github.event.inputs.issue-number }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/probe_sitemap.py --out sitemap-probe-results
+
+      - name: رفع النتائج
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitemap-probe-results
+          path: sitemap-probe-results/
+          retention-days: 30
+          if-no-files-found: error
