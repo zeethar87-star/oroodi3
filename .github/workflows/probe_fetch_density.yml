@@ -1,0 +1,44 @@
+# سبر كثافة السحب: يشغّل يدويًا فقط، يجيب على سؤال FEASIBILITY §3 —
+# هل سحب صفحات عروض البنوك التسعة بينجح من IP GitHub Actions بلا جافاسكربت وبلا مفتاح AI؟
+name: سبر كثافة السحب
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue-number:
+        description: 'رقم بلاغ مخصص لنشر الملخص فيه (اختياري — اتركه فارغًا لتخطي التعليق)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: probe-fetch-density
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: سحب صفحات الجدوى §3 وقياس الكثافة
+        env:
+          PROBE_ISSUE_NUMBER: ${{ github.event.inputs.issue-number }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/probe_run.py --out probe-results
+
+      - name: رفع النتائج
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe-results
+          path: probe-results/
+          retention-days: 30
+          if-no-files-found: error
