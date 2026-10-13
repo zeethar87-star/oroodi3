@@ -34,4 +34,4 @@
 
 ## الحالة
 
-المرحلة ٠ مكتملة. التالي: خطوات التشغيل في [`docs/SETUP_AR.md`](docs/SETUP_AR.md)، ثم اختبار الكثافة في [`docs/FEASIBILITY.md`](docs/FEASIBILITY.md).
+المرحلة ٠ واختبار الكثافة الرسمي من GitHub Actions اتقفلوا. خطوات المؤسس في [`docs/SETUP_AR.md`](docs/SETUP_AR.md) ما زالت لازمة للتشغيل الإنتاجي، لكن أقرب خطوة ناحية هدف الـ٣٠ عرضاً الساري هي النزول لروابط الفهارس الفرعية بالبنوك اللي سحبها نجح بلا جافاسكربت، كما هو موثّق في [`docs/FEASIBILITY.md`](docs/FEASIBILITY.md).
