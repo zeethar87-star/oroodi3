@@ -1,0 +1,105 @@
+{
+  "snapshot_date": "2026-10-16",
+  "status": "RESEARCH_ONLY_UNAPPROVED_NOT_LIVE",
+  "batch": 2,
+  "issuers_checked": [
+    "مصرف الراجحي",
+    "البنك السعودي الأول"
+  ],
+  "record_count": 5,
+  "offer_candidates": [
+    {
+      "id": "research-rajhi-stily",
+      "issuer": "مصرف الراجحي",
+      "merchant": "ستايلي",
+      "benefit": "خصم 30% على الخدمات الرئيسية",
+      "expiry_date": "2026-12-31",
+      "status": "VERIFIED_PUBLISHED_ACTIVE",
+      "accepted_cards": [
+        "credit",
+        "prepaid"
+      ],
+      "wallet_payment": "EXCLUDED",
+      "channels": [
+        "store",
+        "website",
+        "app"
+      ],
+      "source_url": "https://www.alrajhibank.com.sa/ar/Personal/Offers/CardsOffers/Car-Services/Stily",
+      "note": "No Apple Pay / mada Pay / Samsung Pay or other digital wallets; other promotions not stackable."
+    },
+    {
+      "id": "research-rajhi-sunroll",
+      "issuer": "مصرف الراجحي",
+      "merchant": "صن رول",
+      "benefit": "خصم 20%",
+      "expiry_date": null,
+      "conflicting_expiry_dates": [
+        "2026-12-23",
+        "2026-12-24"
+      ],
+      "status": "CONFLICTING_EVIDENCE",
+      "accepted_cards": [
+        "all_alrajhi_cards"
+      ],
+      "wallet_payment": "NOT_STATED",
+      "channels": [
+        "store",
+        "website",
+        "app"
+      ],
+      "source_url": "https://www.alrajhibank.com.sa/ar/Personal/Offers/CardsOffers/Furniture-and-Home-Appliances/Sun-Roll",
+      "alternate_source_url": "https://www.alrajhibank.com.sa/Personal/Offers/CardsOffers/Furniture-and-Home-Appliances/Sun-Roll",
+      "note": "Arabic page heading 23 Dec vs detail 24 Dec; other version says 24 Dec. Code ARB or card presentation. Current production uses 24 Dec."
+    },
+    {
+      "id": "research-sab-wacafe",
+      "issuer": "البنك السعودي الأول",
+      "merchant": "وكف",
+      "benefit": "خصم 10%",
+      "start_date": "2026-06-20",
+      "expiry_date": "2027-06-20",
+      "status": "VERIFIED_PUBLISHED_ACTIVE",
+      "accepted_cards": [
+        "credit",
+        "mada"
+      ],
+      "wallet_payment": "NOT_STATED",
+      "source_url": "https://www.sab.com/ar/personal/compare-credit-cards/credit-card-special-offers/all-offers/",
+      "note": "List view confirms value, eligibility class, dates; full offer terms and channel not validated."
+    },
+    {
+      "id": "research-sab-lazyboy",
+      "issuer": "البنك السعودي الأول",
+      "merchant": "ليزي بوي",
+      "benefit": "خصم 30%",
+      "start_date": "2026-06-25",
+      "expiry_date": "2027-06-25",
+      "status": "VERIFIED_PUBLISHED_ACTIVE",
+      "accepted_cards": [
+        "credit",
+        "mada"
+      ],
+      "wallet_payment": "NOT_STATED",
+      "source_url": "https://www.sab.com/ar/personal/compare-credit-cards/credit-card-special-offers/all-offers/",
+      "note": "Detailed terms not independently confirmed beyond official list."
+    },
+    {
+      "id": "research-sab-shawarma",
+      "issuer": "البنك السعودي الأول",
+      "merchant": "بيت الشاورما",
+      "benefit": "خصم 12%",
+      "start_date": "2026-06-01",
+      "expiry_date": "2027-08-09",
+      "status": "VERIFIED_PUBLISHED_ACTIVE",
+      "accepted_cards": [
+        "credit",
+        "mada"
+      ],
+      "wallet_payment": "NOT_STATED",
+      "source_url": "https://www.sab.com/ar/personal/compare-credit-cards/credit-card-special-offers/all-offers/",
+      "note": "Not the same offer as SNB 10%; issuer-specific promotions must remain distinct."
+    }
+  ],
+  "warning": "Not exhaustive; no insertion into offers.json; listing terms can be incomplete."
+}
