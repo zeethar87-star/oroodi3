@@ -1,0 +1,233 @@
+{
+  "snapshot_date": "2026-10-16",
+  "timezone": "Asia/Riyadh",
+  "status": "RESEARCH_ONLY_UNAPPROVED_NOT_LIVE",
+  "scope": "Five issuer/wallet cases; deliberately not comprehensive",
+  "offer_count": 8,
+  "offer_candidates": [
+    {
+      "id": "research-snb-aani-dani",
+      "issuer": "البنك الأهلي السعودي",
+      "merchant": "آني وداني",
+      "value": "10%",
+      "benefit_type": "discount",
+      "start_date": "2026-07-26",
+      "expiry_date": "2026-12-31",
+      "status": "VERIFIED_PUBLISHED_ACTIVE",
+      "source_url": "https://www.alahli.com/ar/pages/personal-banking/credit-cards/credit-card-promotions",
+      "evidence_summary": "Official listing: 10% for SNB Mada, credit and Lak cards, 26 July to 31 December 2026.",
+      "eligibility": {
+        "card_types": [
+          "mada",
+          "credit",
+          "lak"
+        ],
+        "accepted_payment_methods": [],
+        "channels": [],
+        "targeted": false
+      },
+      "limitations": [
+        "Detailed payment channel and caps not established from listing."
+      ]
+    },
+    {
+      "id": "research-snb-amazon-prime",
+      "issuer": "البنك الأهلي السعودي",
+      "merchant": "Amazon Prime",
+      "value": "حتى 6 أشهر عضوية",
+      "benefit_type": "benefit",
+      "start_date": "2026-01-14",
+      "expiry_date": "2026-10-30",
+      "status": "VERIFIED_PUBLISHED_ACTIVE",
+      "source_url": "https://www.alahli.com/ar/pages/personal-banking/credit-cards/credit-card-promotions",
+      "evidence_summary": "Arabic and English official offer listings show 30 October 2026 for Prime membership.",
+      "eligibility": {
+        "card_types": [],
+        "accepted_payment_methods": [],
+        "channels": [],
+        "targeted": false
+      },
+      "production_discrepancy": "offers.json currently says 2027-01-14; requires founder-reviewed data correction through existing approved intake."
+    },
+    {
+      "id": "research-snb-ihg-conflict",
+      "issuer": "البنك الأهلي السعودي",
+      "merchant": "IHG",
+      "value": "15%",
+      "benefit_type": "discount",
+      "start_date": "2026-01-15",
+      "expiry_date": null,
+      "conflicting_expiry_dates": [
+        "2026-12-03",
+        "2026-12-31"
+      ],
+      "status": "CONFLICTING_EVIDENCE",
+      "source_url": "https://www.alahli.com/en/pages/personal-banking/credit-cards/credit-card-promotions",
+      "alternate_source_url": "https://www.alahli.com/ar/pages/personal-banking/credit-cards/credit-card-promotions",
+      "evidence_summary": "English official listing has 3 December; Arabic official listing has 31 December 2026.",
+      "eligibility": {
+        "card_types": [],
+        "accepted_payment_methods": [],
+        "channels": [],
+        "targeted": false
+      },
+      "limitations": [
+        "Do not pick an expiry date until resolved at campaign detail / bank."
+      ]
+    },
+    {
+      "id": "research-riyad-white-clinic",
+      "issuer": "بنك الرياض",
+      "merchant": "وايت كلينيك",
+      "value": "50% للاستشارات / 20% لخدمات المركز",
+      "benefit_type": "discount",
+      "start_date": "2026-10-04",
+      "expiry_date": "2027-07-21",
+      "status": "VERIFIED_PUBLISHED_ACTIVE",
+      "source_url": "https://www.riyadbank.com/ar/white-clinic",
+      "evidence_summary": "Official detail distinguishes 50% consultations versus 20% other center services; Riyad cards Mada, prepaid, credit accepted; present card and inform employee.",
+      "eligibility": {
+        "card_types": [
+          "mada",
+          "prepaid",
+          "credit"
+        ],
+        "accepted_payment_methods": [
+          "card_direct"
+        ],
+        "channels": [
+          "in_store"
+        ],
+        "targeted": false,
+        "requires_card_presentation": true
+      },
+      "limitations": [
+        "Offer is not an unconditional 50% on all clinic services."
+      ]
+    },
+    {
+      "id": "research-stc-bafello",
+      "issuer": "بنك إس تي سي",
+      "merchant": "Bafello",
+      "value": "50%",
+      "benefit_type": "discount",
+      "start_date": "2026-10-11",
+      "expiry_date": "2026-10-31",
+      "status": "VERIFIED_PUBLISHED_ACTIVE",
+      "source_url": "https://stcbank.com.sa/ar/web/guest/w/bafello-offer",
+      "evidence_summary": "All STC Bank Mada, prepaid, credit; code STCB50; Apple Pay and Samsung Pay accepted; no minimum and no maximum stated.",
+      "eligibility": {
+        "card_types": [
+          "mada",
+          "prepaid",
+          "credit"
+        ],
+        "accepted_payment_methods": [
+          "card_direct",
+          "apple_pay",
+          "samsung_pay"
+        ],
+        "channels": [
+          "online"
+        ],
+        "targeted": false,
+        "promo_code": "STCB50",
+        "minimum_spend_sar": 0,
+        "stacking_allowed": false
+      }
+    },
+    {
+      "id": "research-stc-lolivo",
+      "issuer": "بنك إس تي سي",
+      "merchant": "لوليفو",
+      "value": "30%",
+      "benefit_type": "discount",
+      "start_date": null,
+      "expiry_date": "2027-12-31",
+      "status": "VERIFIED_PUBLISHED_ACTIVE",
+      "source_url": "https://stcbank.com.sa/en/web/guest/w/lolivo-offer",
+      "listing_source_url": "https://stcbank.com.sa/web/guest/offers?nis=6",
+      "evidence_summary": "Only As Sulimaniyah Riyadh branch; minimum SAR 30; no delivery apps; STC cards incl digital wallets; listing indicates 31 Dec 2027.",
+      "eligibility": {
+        "card_types": [
+          "mada",
+          "prepaid",
+          "credit"
+        ],
+        "accepted_payment_methods": [
+          "card_direct",
+          "apple_pay",
+          "samsung_pay"
+        ],
+        "channels": [
+          "in_store"
+        ],
+        "targeted": false,
+        "minimum_spend_sar": 30,
+        "city": "Riyadh",
+        "branch": "As Sulimaniyah",
+        "excluded_channels": [
+          "delivery_app"
+        ]
+      },
+      "limitations": [
+        "Start date not established; location should not be converted to pin coordinates without branch geocoding evidence."
+      ]
+    },
+    {
+      "id": "research-urpay-maghrabi",
+      "issuer": "urpay",
+      "merchant": "مغربي",
+      "value": "حتى 10%",
+      "benefit_type": "discount",
+      "start_date": null,
+      "expiry_date": "2026-12-31",
+      "status": "VERIFIED_PUBLISHED_ACTIVE",
+      "source_url": "https://www.urpay.com.sa/ar/urpay-offers/mag",
+      "evidence_summary": "All urpay cards; code URPAY; Cartier excluded; multiple redemptions; no combining.",
+      "eligibility": {
+        "card_types": [
+          "urpay_card"
+        ],
+        "accepted_payment_methods": [],
+        "channels": [],
+        "targeted": false,
+        "promo_code": "URPAY",
+        "excluded_products": [
+          "Cartier"
+        ],
+        "stacking_allowed": false
+      },
+      "limitations": [
+        "Exact transaction channel and extra criteria need separate checking."
+      ]
+    },
+    {
+      "id": "research-anb-oct-cashback",
+      "issuer": "البنك العربي الوطني",
+      "merchant": null,
+      "value": null,
+      "benefit_type": "cashback",
+      "start_date": "2026-10-01",
+      "expiry_date": "2026-10-31",
+      "status": "VERIFIED_TARGETED",
+      "source_url": "https://anb.com.sa/ar/web/anb/cashback-october",
+      "evidence_summary": "Selected SMS-invited customers; cashback percent/cap individualized; minimum total spend SAR 100; excluded transactions and active-card requirement.",
+      "eligibility": {
+        "card_types": [
+          "credit"
+        ],
+        "accepted_payment_methods": [],
+        "channels": [],
+        "targeted": true,
+        "invitation_required": true,
+        "minimum_spend_sar": 100
+      },
+      "limitations": [
+        "Do not invent cashback percent; publication is not proof of user invitation."
+      ]
+    }
+  ],
+  "method": "Official pages inspected via web research. No automated purchase tests, no authenticated-app examination, no issuer confirmation of individual eligibility.",
+  "separation_rule": "NEVER write these records directly to offers.json or imply exact matching without confirmed criteria."
+}

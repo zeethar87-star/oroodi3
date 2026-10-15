@@ -1,0 +1,25 @@
+name: "Research candidate checks (no publishing)"
+on:
+  pull_request:
+    paths:
+      - 'research/**'
+      - '.github/workflows/research-candidates.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  research-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify baseline product data unchanged and run existing validator
+        run: python scripts/validate.py
+      - name: Check candidate dataset without publication
+        run: python research/eligibility_preview.py
+      - name: Test eligibility inference boundaries
+        run: python -m unittest discover -s research -p 'test_*.py' -v

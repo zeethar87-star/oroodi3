@@ -1,0 +1,161 @@
+{
+  "snapshot_date": "2026-10-16",
+  "source_regulator": "البنك المركزي السعودي SAMA",
+  "status": "PARTIAL_MARKET_REGISTRY_NOT_OFFER_COVERAGE",
+  "scope": "Saudi local and digital banks; selected payment institutions only; foreign bank branches to be enumerated in later batches.",
+  "counts": {
+    "local_banks": 11,
+    "digital_banks": 4,
+    "operating_digital_banks": 3,
+    "all_wallets_covered": false
+  },
+  "banks": [
+    {
+      "id": "local-01",
+      "name": "البنك الأهلي السعودي",
+      "kind": "local_bank",
+      "status": "licensed",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": true
+    },
+    {
+      "id": "local-02",
+      "name": "مصرف الراجحي",
+      "kind": "local_bank",
+      "status": "licensed",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": false
+    },
+    {
+      "id": "local-03",
+      "name": "بنك الرياض",
+      "kind": "local_bank",
+      "status": "licensed",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": true
+    },
+    {
+      "id": "local-04",
+      "name": "البنك السعودي الأول",
+      "kind": "local_bank",
+      "status": "licensed",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": false
+    },
+    {
+      "id": "local-05",
+      "name": "البنك العربي الوطني",
+      "kind": "local_bank",
+      "status": "licensed",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": true
+    },
+    {
+      "id": "local-06",
+      "name": "مصرف الإنماء",
+      "kind": "local_bank",
+      "status": "licensed",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": false
+    },
+    {
+      "id": "local-07",
+      "name": "البنك السعودي الفرنسي",
+      "kind": "local_bank",
+      "status": "licensed",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": false
+    },
+    {
+      "id": "local-08",
+      "name": "البنك السعودي للاستثمار",
+      "kind": "local_bank",
+      "status": "licensed",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": false
+    },
+    {
+      "id": "local-09",
+      "name": "بنك الجزيرة",
+      "kind": "local_bank",
+      "status": "licensed",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": false
+    },
+    {
+      "id": "local-10",
+      "name": "بنك البلاد",
+      "kind": "local_bank",
+      "status": "licensed",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": false
+    },
+    {
+      "id": "local-11",
+      "name": "بنك الخليج الدولي - السعودية",
+      "kind": "local_bank",
+      "status": "licensed",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": false
+    },
+    {
+      "id": "digital-01",
+      "name": "بنك إس تي سي",
+      "kind": "digital_bank",
+      "status": "operating",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": true
+    },
+    {
+      "id": "digital-02",
+      "name": "بنك فيجن",
+      "kind": "digital_bank",
+      "status": "operating",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": false
+    },
+    {
+      "id": "digital-03",
+      "name": "بنك دال ثلاثمائة وستون D360",
+      "kind": "digital_bank",
+      "status": "operating",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": false
+    },
+    {
+      "id": "digital-04",
+      "name": "آيزي بنك EZ Bank",
+      "kind": "digital_bank",
+      "status": "not_yet_operational",
+      "official_regulator_source": "https://sama.gov.sa/ar-sa/Supervision/LicenseEntities/pages/licensedbanks.aspx",
+      "offers_audited": false
+    }
+  ],
+  "payment_institutions_sample": [
+    {
+      "name": "Barraq Financial",
+      "kind": "EMI",
+      "official_regulator_source": "https://sama.gov.sa/en-US/Supervision/LicenseEntities/Pages/Licensed_Payment_Service_Providers_companies.aspx",
+      "consumer_offer_audit": "PENDING"
+    },
+    {
+      "name": "Mobily Pay (Etihad Fintech)",
+      "kind": "EMI",
+      "official_regulator_source": "https://sama.gov.sa/en-US/Supervision/LicenseEntities/Pages/Licensed_Payment_Service_Providers_companies.aspx",
+      "consumer_offer_audit": "PENDING"
+    },
+    {
+      "name": "Hala Company",
+      "kind": "EMI",
+      "official_regulator_source": "https://sama.gov.sa/en-US/Supervision/LicenseEntities/Pages/Licensed_Payment_Service_Providers_companies.aspx",
+      "consumer_offer_audit": "PENDING"
+    },
+    {
+      "name": "urpay",
+      "kind": "consumer_wallet",
+      "official_provider_source": "https://www.urpay.com.sa/ar/all-offers",
+      "consumer_offer_audit": "PARTIAL"
+    }
+  ],
+  "note": "Regulatory roster != evidence that every entity issues cards or has public promotions. SAMA payment-list is longer; not an exhaustive payment-entity inventory."
+}
