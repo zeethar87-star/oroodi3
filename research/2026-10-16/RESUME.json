@@ -4,14 +4,15 @@
   "branch": "research/card-eligibility-audit-20261016",
   "base_sha": "4254dee825b37db42d2400531070eb7b8ada54b3",
   "coverage": {
-    "issuers_checked": 5,
-    "research_candidate_records": 8,
+    "issuers_checked": 7,
+    "research_candidate_records": 13,
     "full_issuer_audits": 0,
     "payment_market_fully_enumerated": false
   },
   "integrated_to_offers_json": false,
   "production_feature_enabled": false,
   "next_actions": [
+    "Verify and deepen batch 02: Al Rajhi + SAB official detail terms",
     "Run eligibility preview tests",
     "Founder review proposed DEC-012",
     "Correct SNB Amazon Prime expiry using approved offer workflow",
