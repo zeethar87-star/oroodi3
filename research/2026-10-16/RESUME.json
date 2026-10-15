@@ -1,0 +1,22 @@
+{
+  "run_id": "ARUDI_RESEARCH_BATCH_01_20261016",
+  "repo": "zeethar87-star/oroodi3",
+  "branch": "research/card-eligibility-audit-20261016",
+  "base_sha": "4254dee825b37db42d2400531070eb7b8ada54b3",
+  "coverage": {
+    "issuers_checked": 5,
+    "research_candidate_records": 8,
+    "full_issuer_audits": 0,
+    "payment_market_fully_enumerated": false
+  },
+  "integrated_to_offers_json": false,
+  "production_feature_enabled": false,
+  "next_actions": [
+    "Run eligibility preview tests",
+    "Founder review proposed DEC-012",
+    "Correct SNB Amazon Prime expiry using approved offer workflow",
+    "Resolve IHG conflicting official dates",
+    "Inspect deeper official offer pages for other entities",
+    "Decide if/when production card matching is approved"
+  ]
+}
