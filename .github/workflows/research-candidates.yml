@@ -22,4 +22,4 @@ jobs:
       - name: Check candidate dataset without publication
         run: python research/eligibility_preview.py
       - name: Test eligibility inference boundaries
-        run: python -m unittest research.test_eligibility_preview -v
+        run: python -m unittest discover -s research -p 'test_*.py' -v
