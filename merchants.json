@@ -1,23 +1,267 @@
 {
   "_about": "قاموس الأسماء الموحّدة للمتاجر. name = الاسم المعتمد الذي يُكتب في merchantName حرفياً. aliases = كل الصيغ التي قد تظهر في صفحات البنوك. إضافة متجر هنا لا تعني وجود عرض له؛ القاموس أسماء فقط.",
   "merchants": [
-    { "name": "نون", "aliases": ["Noon", "noon.com", "نون السعودية"] },
-    { "name": "أمازون", "aliases": ["Amazon", "Amazon.sa", "Amazon Prime", "أمازون برايم", "امازون"] },
-    { "name": "كيتا", "aliases": ["Keeta"] },
-    { "name": "هنقرستيشن", "aliases": ["HungerStation", "Hungerstation", "هنقر ستيشن", "هنجرستيشن"] },
-    { "name": "جاهز", "aliases": ["Jahez"] },
-    { "name": "شي إن", "aliases": ["SHEIN", "Shein", "شي ان", "شين"] },
-    { "name": "إكسترا", "aliases": ["eXtra", "Extra", "اكسترا"] },
-    { "name": "آي هيرب", "aliases": ["iHerb", "اي هيرب"] },
-    { "name": "المسافر", "aliases": ["Almosafer", "al-mosafer"] },
-    { "name": "المطار", "aliases": ["Almatar"] },
-    { "name": "ريف للعطور", "aliases": ["Reef Perfumes", "ريف"] },
-    { "name": "أجيو", "aliases": ["Agio", "مطعم أجيو", "اجيو"] },
-    { "name": "إرث كافيه", "aliases": ["Urth Caffe", "Urth Caffé", "ارث كافيه"] },
-    { "name": "آغاتي", "aliases": ["Aghatti", "اغاتي"] },
-    { "name": "مستر تشاو", "aliases": ["MR CHOW", "MR Chow", "Mr Chow", "مستر تشاو"] },
-    { "name": "إل باريتو", "aliases": ["IL BARETTO", "Il Baretto", "ال باريتو"] },
-    { "name": "صن رول", "aliases": ["Sun Roll", "SunRoll"] },
-    { "name": "IHG", "aliases": ["فنادق ومنتجعات IHG", "IHG Hotels & Resorts", "آي إتش جي"] }
+    {
+      "name": "نون",
+      "aliases": [
+        "Noon",
+        "noon.com",
+        "نون السعودية"
+      ]
+    },
+    {
+      "name": "أمازون",
+      "aliases": [
+        "Amazon",
+        "Amazon.sa",
+        "Amazon Prime",
+        "أمازون برايم",
+        "امازون"
+      ]
+    },
+    {
+      "name": "كيتا",
+      "aliases": [
+        "Keeta"
+      ]
+    },
+    {
+      "name": "هنقرستيشن",
+      "aliases": [
+        "HungerStation",
+        "Hungerstation",
+        "هنقر ستيشن",
+        "هنجرستيشن"
+      ]
+    },
+    {
+      "name": "جاهز",
+      "aliases": [
+        "Jahez"
+      ]
+    },
+    {
+      "name": "شي إن",
+      "aliases": [
+        "SHEIN",
+        "Shein",
+        "شي ان",
+        "شين"
+      ]
+    },
+    {
+      "name": "إكسترا",
+      "aliases": [
+        "eXtra",
+        "Extra",
+        "اكسترا"
+      ]
+    },
+    {
+      "name": "آي هيرب",
+      "aliases": [
+        "iHerb",
+        "اي هيرب"
+      ]
+    },
+    {
+      "name": "المسافر",
+      "aliases": [
+        "Almosafer",
+        "al-mosafer"
+      ]
+    },
+    {
+      "name": "المطار",
+      "aliases": [
+        "Almatar"
+      ]
+    },
+    {
+      "name": "ريف للعطور",
+      "aliases": [
+        "Reef Perfumes",
+        "ريف"
+      ]
+    },
+    {
+      "name": "أجيو",
+      "aliases": [
+        "Agio",
+        "مطعم أجيو",
+        "اجيو"
+      ]
+    },
+    {
+      "name": "إرث كافيه",
+      "aliases": [
+        "Urth Caffe",
+        "Urth Caffé",
+        "ارث كافيه"
+      ]
+    },
+    {
+      "name": "آغاتي",
+      "aliases": [
+        "Aghatti",
+        "اغاتي"
+      ]
+    },
+    {
+      "name": "مستر تشاو",
+      "aliases": [
+        "MR CHOW",
+        "MR Chow",
+        "Mr Chow",
+        "مستر تشاو"
+      ]
+    },
+    {
+      "name": "إل باريتو",
+      "aliases": [
+        "IL BARETTO",
+        "Il Baretto",
+        "ال باريتو"
+      ]
+    },
+    {
+      "name": "صن رول",
+      "aliases": [
+        "Sun Roll",
+        "SunRoll"
+      ]
+    },
+    {
+      "name": "IHG",
+      "aliases": [
+        "فنادق ومنتجعات IHG",
+        "IHG Hotels & Resorts",
+        "آي إتش جي"
+      ]
+    },
+    {
+      "name": "Bafello",
+      "aliases": []
+    },
+    {
+      "name": "مكعب",
+      "aliases": []
+    },
+    {
+      "name": "الصنات للحقائب",
+      "aliases": []
+    },
+    {
+      "name": "لوليفو",
+      "aliases": []
+    },
+    {
+      "name": "دايركت",
+      "aliases": []
+    },
+    {
+      "name": "دار الأميرات",
+      "aliases": []
+    },
+    {
+      "name": "أوشن سبا",
+      "aliases": []
+    },
+    {
+      "name": "غرينتاهب",
+      "aliases": []
+    },
+    {
+      "name": "Legoland",
+      "aliases": []
+    },
+    {
+      "name": "صيدلية زهرة الروضة",
+      "aliases": []
+    },
+    {
+      "name": "يلو",
+      "aliases": []
+    },
+    {
+      "name": "أروماتك",
+      "aliases": []
+    },
+    {
+      "name": "عيادات الكسائي",
+      "aliases": []
+    },
+    {
+      "name": "الشايع للساعات",
+      "aliases": []
+    },
+    {
+      "name": "مسمار",
+      "aliases": []
+    },
+    {
+      "name": "بيت التحميص",
+      "aliases": []
+    },
+    {
+      "name": "قولدن سنت",
+      "aliases": []
+    },
+    {
+      "name": "وييل ستيشن",
+      "aliases": []
+    },
+    {
+      "name": "ألترا شيلد",
+      "aliases": []
+    },
+    {
+      "name": "نباتاتي",
+      "aliases": []
+    },
+    {
+      "name": "سيّار",
+      "aliases": []
+    },
+    {
+      "name": "ديتاليواوتو",
+      "aliases": []
+    },
+    {
+      "name": "كيكو ميلانو",
+      "aliases": []
+    },
+    {
+      "name": "نايس ون",
+      "aliases": []
+    },
+    {
+      "name": "فلاورد",
+      "aliases": []
+    },
+    {
+      "name": "Airalo",
+      "aliases": []
+    },
+    {
+      "name": "فانقارد",
+      "aliases": []
+    },
+    {
+      "name": "نو رومينق",
+      "aliases": []
+    },
+    {
+      "name": "بترومين اكسبرس",
+      "aliases": []
+    },
+    {
+      "name": "ريد بُل موبايل",
+      "aliases": []
+    },
+    {
+      "name": "مجموعة طلعت مصطفى",
+      "aliases": []
+    }
   ]
 }
