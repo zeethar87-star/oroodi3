@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>عروضي | عروض البنوك والمحافظ السعودية</title>
-  <meta name="description" content="عروضي يجمع عروض البنوك والمحافظ السعودية في مكان واحد بطريقة هادئة وذكية." />
-  <meta name="theme-color" content="#1B5E3F" />
+  <title>عروضي | عروض بطاقاتك</title>
+  <meta name="description" content="عروضي محفظة عروضك: اختار بطاقاتك وشوف العروض اللي تنطبق عليها بس — كل العروض من صفحات المزودين الرسمية." />
+  <meta name="theme-color" content="#1F1A17" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FFD400'/%3E%3Ctext x='32' y='45' font-size='34' text-anchor='middle' fill='%23E4002B' font-family='sans-serif' font-weight='bold'%3E%D8%B9%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=IBM+Plex+Mono:wght@500;700&family=Lalezar&display=swap" rel="stylesheet" />
   <style>
 
     :root {
@@ -73,6 +74,18 @@
       --dur-slow:  380ms;
       --header-height: 72px;
       --nav-height:    80px;
+
+      /* محفظة الإيصالات (قرار زيت 15/10) — ألوان ملصق السعر على الخشب الغامق */
+      --night:   #1F1A17;
+      --night-2: #2B2420;
+      --night-3: #3A302A;
+      --paper:   #FFFDF5;
+      --wallet-ink: #141110;
+      --wallet-mute: #8A8079;
+      --label-yellow: #FFD400;
+      --label-red:    #E4002B;
+      --f-display: "Lalezar", "Cairo", Tahoma, sans-serif;
+      --f-mono: "IBM Plex Mono", Tahoma, monospace;
     }
     * { box-sizing:border-box; }
     html { min-height:100%; background:var(--bg); }
@@ -657,6 +670,147 @@
     .toast-info::before { content:'·  '; color:var(--ink-3); }
     .thin-scrollbar::-webkit-scrollbar { height:6px; width:6px; }
     .thin-scrollbar::-webkit-scrollbar-thumb { background:var(--line-strong); border-radius:999px; }
+
+    /* ═══ محفظة الإيصالات: لوحة الرئيسية الغامقة (تصميم زيت 15/10) ═══ */
+    body.brand-night {
+      background: var(--night);
+      background-image: none;
+      color: var(--paper);
+    }
+    body.brand-night .bottom-nav-wrap { background: linear-gradient(180deg, transparent, var(--night) 30%); }
+    body.brand-night #bottom-nav { background: rgba(43,36,32,0.96); border-color: var(--night-3); }
+    body.brand-night .nav-item { color: var(--wallet-mute); }
+    body.brand-night .nav-item.active { background: var(--label-yellow); color: var(--wallet-ink); }
+    body.brand-night .glass,
+    body.brand-night .glass-card { background: rgba(43,36,32,0.94); border-color: rgba(58,48,42,0.85); }
+    body.brand-night #app-header { box-shadow: 0 1px 0 var(--night-3); }
+    body.brand-night #filter-bar { box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+    body.brand-night .filter-chip { background: var(--night-2); border-color: var(--night-3); color: var(--paper); }
+    body.brand-night .filter-chip.active { background: var(--label-yellow); border-color: var(--label-yellow); color: var(--wallet-ink); }
+    body.brand-night .merchant-chip { background: transparent; border-color: var(--night-3); color: var(--wallet-mute); }
+    body.brand-night .merchant-chip.active { background: var(--night-2); border-style: solid; border-color: var(--label-yellow); color: var(--label-yellow); }
+    body.brand-night .filter-control { background: var(--night-2); border-color: var(--night-3); color: var(--paper); }
+    body.brand-night .filter-control::placeholder { color: var(--wallet-mute); }
+    body.brand-night select.filter-control option { background: var(--night-2); color: var(--paper); }
+    body.brand-night .toggle-pill span { background: var(--night-2); border-color: var(--night-3); color: var(--paper); }
+    body.brand-night .toggle-pill input:checked + span { background: var(--label-yellow); border-color: var(--label-yellow); color: var(--wallet-ink); }
+    .wallet-head { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .wallet-logo { font-family:var(--f-display); font-size:2rem; line-height:1; color:var(--label-yellow); transform:rotate(-3deg); }
+    .wallet-logo span { color:var(--label-red); }
+    .wallet-note { font-size:.8rem; color:var(--wallet-mute); font-weight:700; }
+    .wsection-title { font-family:var(--f-display); font-weight:400; font-size:1.35rem; margin:0; color:var(--label-yellow); }
+    .wcards { display:flex; gap:10px; overflow-x:auto; padding-bottom:6px; scroll-snap-type:x mandatory; }
+    .wcard {
+      flex:0 0 132px; scroll-snap-align:start; aspect-ratio:1.586; border-radius:12px; padding:10px;
+      display:grid; align-content:space-between; cursor:pointer; border:3px solid transparent;
+      color:#fff; font:inherit; text-align:start; position:relative; font-weight:900;
+    }
+    .wcard[aria-pressed="true"] { border-color:var(--label-yellow); box-shadow:0 0 0 3px var(--night),0 0 0 5px var(--label-yellow); }
+    .wcard[aria-pressed="false"] { filter:grayscale(.85) brightness(.7); }
+    .wcard small { font-family:var(--f-mono); font-size:.72rem; opacity:.85; }
+    .wcard .wtick { position:absolute; top:8px; inset-inline-end:8px; width:20px; height:20px; border-radius:50%; background:var(--label-yellow); color:var(--wallet-ink); display:grid; place-items:center; font-weight:700; font-size:.8rem; }
+    .wcard[aria-pressed="false"] .wtick { display:none; }
+    .wcard:focus-visible, .wchip:focus-visible, .wsection-title:focus-visible { outline:3px solid var(--label-yellow); outline-offset:3px; }
+    .wc1 { background:linear-gradient(135deg,#0E7A5A,#063D2D); }
+    .wc2 { background:linear-gradient(135deg,#1D3E8A,#0B1A40); }
+    .wc3 { background:linear-gradient(135deg,#3A3A3A,#141414); }
+    .wc4 { background:linear-gradient(135deg,#6B4BD8,#2E1C70); }
+    .wc5 { background:linear-gradient(135deg,#B3541E,#5C2708); }
+    .wc6 { background:linear-gradient(135deg,#9F1239,#4C0519); }
+    .wc7 { background:linear-gradient(135deg,#0F766E,#134E4A); }
+    .wc8 { background:linear-gradient(135deg,#A16207,#713F12); }
+    .wcount { display:flex; align-items:baseline; gap:8px; }
+    .wcount b { font-family:var(--f-display); font-size:2.4rem; color:var(--label-yellow); line-height:1; font-weight:400; }
+    .wchips { display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; }
+    .wchip {
+      font:inherit; font-weight:700; font-size:.9rem; border:2px solid var(--label-yellow); background:transparent;
+      color:var(--label-yellow); border-radius:999px; padding:6px 14px; cursor:pointer; white-space:nowrap;
+    }
+    .wchip[aria-pressed="true"] { background:var(--label-yellow); color:var(--wallet-ink); }
+    .receipt {
+      background:var(--paper); color:var(--wallet-ink); padding:18px 18px 22px; position:relative; font-family:var(--f-mono);
+      -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/14px 51% repeat-x,conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) top/14px 51% repeat-x;
+      mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/14px 51% repeat-x,conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) top/14px 51% repeat-x;
+    }
+    @media (prefers-reduced-motion:no-preference){ .receipt { animation:receiptIn .35s ease both; } }
+    @keyframes receiptIn { from { transform:translateY(8px); opacity:.4; } to { transform:none; opacity:1; } }
+    .rc-head { display:flex; justify-content:space-between; gap:8px; font-family:"Cairo",Tahoma,sans-serif; font-weight:700; font-size:.9rem; }
+    .rc-dash { border-top:2px dashed #b9b2a6; margin:10px 0; }
+    .rc-big { display:flex; align-items:center; justify-content:center; gap:10px; }
+    .rc-disc {
+      background:var(--label-yellow); color:var(--label-red); font-family:var(--f-display); font-weight:400;
+      font-size:3.4rem; line-height:1; padding:8px 14px 2px; transform:rotate(-4deg); box-shadow:4px 4px 0 var(--label-red);
+    }
+    .rc-what { font-family:"Cairo",Tahoma,sans-serif; font-weight:700; text-align:center; margin-top:10px; font-size:1.05rem; }
+    .rc-row { display:flex; justify-content:space-between; gap:8px; font-size:.82rem; font-variant-numeric:tabular-nums; }
+    .rc-why { font-family:"Cairo",Tahoma,sans-serif; font-size:.82rem; background:#FFF3B0; padding:6px 8px; margin-top:8px; font-weight:700; }
+    .rc-bars { height:30px; margin-top:10px; background:repeating-linear-gradient(90deg,#141110 0 2px,transparent 2px 4px,#141110 4px 7px,transparent 7px 9px,#141110 9px 10px,transparent 10px 13px); }
+    .rc-soon { position:absolute; top:58px; inset-inline-start:10px; transform:rotate(-12deg); border:3px solid var(--label-red); color:var(--label-red); padding:0 8px; font-family:var(--f-display); font-size:1.05rem; background:var(--paper); font-weight:400; }
+    .rc-acts { display:flex; gap:8px; margin-top:10px; }
+    .rc-acts button, .rc-acts a {
+      flex:1; text-align:center; font:inherit; font-family:"Cairo",Tahoma,sans-serif; font-weight:700; font-size:.9rem;
+      padding:9px 6px; border-radius:8px; text-decoration:none; cursor:pointer;
+    }
+    .rc-use { background:var(--wallet-ink); color:var(--label-yellow); border:0; }
+    .rc-share { background:transparent; color:var(--wallet-ink); border:2px solid var(--wallet-ink); }
+    .receipt a.rc-use { display:inline-block; }
+    .wmap { border-radius:14px; padding:14px; background:var(--night-2); display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:center; }
+    .wmap svg { width:84px; height:84px; }
+    .wmap b { font-family:var(--f-display); font-weight:400; font-size:1.2rem; color:var(--label-yellow); }
+    .wmap p { margin:2px 0 0; font-size:.85rem; color:var(--wallet-mute); }
+    .wfoot { font-size:.78rem; color:var(--wallet-mute); text-align:center; }
+    .wempty { border:2px dashed var(--wallet-mute); border-radius:12px; padding:18px; color:var(--wallet-mute); text-align:center; font-weight:700; }
+
+    /* الصفحة الرئيسية: صفوف النموذج المعتمد، والإيصال عند فتح العرض فقط. */
+    :root { --wallet-mute:#B8ACA2; }
+    #page-home { max-width:560px; margin:0 auto; padding:20px 0; }
+    #page-home > * + * { margin-top:18px; }
+    .wallet-title { font-family:var(--f-display); font-weight:400; font-size:2.7rem; text-align:center; margin:0; line-height:1.2; }
+    .wallet-sub { text-align:center; margin-top:8px !important; }
+    .wcards { padding:8px; }
+    .wcards.fan { position:relative; display:block; overflow:visible; height:195px; margin:8px 16px 18px; }
+    .fan .wcard { position:absolute; width:58%; min-height:130px; padding:16px; box-shadow:0 18px 30px #0007; }
+    .fan .wcard:nth-child(1) { inset-inline-end:0; top:30px; transform:rotate(8deg); }
+    .fan .wcard:nth-child(2) { inset-inline-start:0; top:18px; transform:rotate(-8deg); }
+    .fan .wcard:nth-child(3) { inset-inline-start:21%; top:0; transform:rotate(-2deg); }
+    .fan:has(.wcard:last-child:nth-child(2)) .wcard { width:52%; }
+    .fan .wcard:first-child { text-align:end; }
+    .fan .wcard:first-child .card-chip { justify-self:end; }
+    .wcards { scroll-margin-top:110px; }
+    .fan .wcard:focus-visible { z-index:4; }
+    .wcard b { font-size:.88rem; overflow-wrap:anywhere; }
+    .card-chip { width:30px; height:22px; border-radius:5px; background:linear-gradient(135deg,#F2DC9C,#B8964A); }
+    .wcount { background:var(--night-2); padding:16px; border-radius:18px; align-items:center; }
+    .wcount b { font-size:3.6rem; }
+    .receipts { display:grid; gap:12px; }
+    .wallet-offer { border:1px solid var(--night-3); background:var(--night-2); color:var(--paper); border-radius:18px; padding:12px; display:grid; grid-template-columns:90px minmax(0,1fr); gap:14px; text-align:start; width:100%; }
+    .wallet-art { display:grid; place-items:center; border-radius:12px; background:repeating-linear-gradient(135deg,#FFD400 0 12px,#EBC400 12px 24px); }
+    .wallet-art.shopping { background:repeating-linear-gradient(135deg,#E4002B 0 12px,#C90026 12px 24px); }
+    .wallet-art svg { width:54px; height:54px; }
+    .wallet-offer-body { display:grid; justify-items:start; gap:7px; min-width:0; }
+    .wallet-offer-status { color:#76EBB4; font-size:.75rem; }
+    .wallet-offer-value { font-family:var(--f-display); font-size:2.5rem; line-height:1.1; color:var(--label-red); background:var(--label-yellow); padding:4px 10px 0; box-shadow:3px 3px 0 var(--label-red); transform:rotate(-2deg); max-width:100%; overflow-wrap:anywhere; }
+    .wallet-offer-title { font-weight:700; overflow-wrap:anywhere; }
+    .wallet-offer-meta { font-size:.8rem; color:var(--wallet-mute); }
+    .wallet-details { color:var(--label-yellow); font-size:.85rem; border-top:1px solid var(--night-3); width:100%; padding-top:6px; }
+    .wallet-add { border:0; border-radius:999px; width:100%; padding:14px; background:var(--label-yellow); color:var(--wallet-ink); font-weight:700; }
+    #walletAllOffers { color:var(--label-yellow); border-color:var(--label-yellow); }
+    .receipt-dialog { border:0; padding:0 0 8px; width:min(440px,calc(100% - 24px)); max-height:90dvh; background:transparent; color:var(--paper); overflow:auto; }
+    .receipt-dialog::backdrop { background:#100C0ACC; }
+    .receipt-close { display:block; margin:0 0 10px; margin-inline-start:auto; padding:10px 18px; background:var(--label-yellow); color:var(--wallet-ink); border:0; border-radius:999px; font-weight:700; }
+    .receipt { overflow-wrap:anywhere; padding:24px 20px 28px; }
+    .rc-disc { font-size:clamp(2rem,9vw,3.4rem); max-width:100%; }
+    .rc-terms,.rc-description { font-family:'Cairo',sans-serif; white-space:pre-wrap; line-height:1.9; font-size:.9rem; }
+    .rc-row { margin:8px 0; }
+    .rc-row > span { min-width:0; }
+    .source-language-note { font-size:.75rem; }
+    .manual-share { width:100%; height:150px; margin-top:12px; }
+    .wallet-offer:focus-visible,.wallet-add:focus-visible,.receipt-dialog button:focus-visible,.receipt-dialog a:focus-visible { outline:3px solid var(--label-yellow); outline-offset:3px; }
+    body.brand-night .offer-card { color:var(--ink); }
+    body.brand-night .offer-card .glass-card { background:var(--surface); }
+    #app-header .app-shell > .flex { flex-wrap:wrap; }
+    @media(max-width:360px) { .wallet-offer { grid-template-columns:64px minmax(0,1fr); gap:10px; } .fan .wcard { min-height:124px; } }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
     .hidden { display:none !important; }
     @media (max-width:640px) {
       .calc-options { grid-template-columns:repeat(2, 1fr); }
@@ -686,6 +840,7 @@
             <small id="lastUpdatedText" class="block text-[var(--ink-3)] font-bold -mt-1">آخر تحديث: جاري التحميل...</small>
           </span>
         </a>
+        <button id="languageBtn" class="wchip" type="button" lang="en" aria-label="Switch to English">English</button>
         <button id="refreshBtn" class="filter-control shrink-0 px-4 py-2 text-sm font-black" type="button" aria-label="تحديث العروض يدويًا">
           🔄 تحديث
         </button>
@@ -760,70 +915,28 @@
 
   <main class="app-shell space-y-7">
     <section id="page-home" class="page-section active" data-page="home">
-      <section class="hero-section">
-        <div style="position:absolute;top:-50px;right:-50px;width:220px;height:220px;border-radius:50%;border:36px solid rgba(255,255,255,0.05);pointer-events:none"></div>
-        <div style="position:absolute;bottom:-40px;left:10%;width:140px;height:140px;border:24px solid rgba(184,134,11,0.12);transform:rotate(45deg);pointer-events:none"></div>
-        <div style="position:relative;z-index:1;text-align:center">
-          <h1 style="color:#fff;font-weight:900;font-size:var(--t-h1);letter-spacing:-0.03em;line-height:1.2;margin-bottom:12px">
-            اعرف العرض اللي يخصك
-            <span style="display:block;color:var(--gain-light)">قبل ما تدفع</span>
-          </h1>
-          <p style="color:rgba(255,255,255,0.75);font-size:var(--t-sm);font-weight:600;max-width:480px;margin:0 auto 24px;line-height:1.7">
-            11 بنك · 18 محفظة · عروض مسبقة الشحن — كل شيء في مكان واحد
-          </p>
-          <div id="heroPills" style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap">
-            <span class="hero-pill">هادئ</span>
-            <span class="hero-pill">أسبوعي</span>
-            <span class="hero-pill">بلا إزعاج</span>
-          </div>
+      <h1 class="wallet-title" data-ar="عروض بطاقاتك" data-en="Offers for your cards">عروض بطاقاتك</h1>
+      <p class="wallet-note wallet-sub" data-ar="اختار البنك أو المحفظة، وراجع شروط بطاقتك قبل الدفع." data-en="Choose your bank or wallet. Check your card’s eligibility before paying.">اختار البنك أو المحفظة، وراجع شروط بطاقتك قبل الدفع.</p>
+
+      <section aria-label="بطاقاتي" style="display:grid;gap:10px">
+        <div class="flex items-center justify-between gap-3">
+          <h2 class="wsection-title">بطاقاتي</h2>
+          <button id="walletClearBtn" class="wchip" type="button" aria-pressed="false">الكل</button>
         </div>
+        <div class="wcards" id="walletCards"></div>
+        <p class="wallet-note">دوس على البطاقات اللي معاك. من غير أرقام ولا بيانات — النوع بس، وبتتحفظ على جهازك.</p>
       </section>
 
-      <div id="statsRow" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-5">
-        <div class="skeleton-box"><div class="skeleton skeleton-line"></div><div class="skeleton skeleton-number"></div><div class="skeleton skeleton-line w-3/4"></div></div>
-        <div class="skeleton-box"><div class="skeleton skeleton-line"></div><div class="skeleton skeleton-number"></div><div class="skeleton skeleton-line w-3/4"></div></div>
-        <div class="skeleton-box"><div class="skeleton skeleton-line"></div><div class="skeleton skeleton-number"></div><div class="skeleton skeleton-line w-3/4"></div></div>
-      </div>
+      <div class="wchips" id="walletChips" role="group" aria-label="الأقسام"></div>
 
-      <div id="fuelBannerWrap" class="mt-5"></div>
-
-      <section class="mt-7">
-        <div class="flex items-center justify-between gap-3 mb-4">
-          <div>
-            <h2 class="text-2xl font-black">أقوى 3 عروض الآن</h2>
-            <p class="text-[var(--ink-3)] text-sm font-semibold">تمرير أفقي سريع حسب درجة الحماس</p>
-          </div>
-          <a href="#offers?s=excitement" class="text-sm font-black text-[var(--brand)]">كل العروض</a>
-        </div>
-        <div id="featuredScroll" class="featured-scroll thin-scrollbar"></div>
+      <section aria-label="العروض المناسبة لبطاقاتك" style="display:grid;gap:12px">
+        <div class="wcount"><b id="walletCount">0</b><span class="wallet-note">عرض ينطبق على بطاقاتك</span></div>
+        <div class="receipts" id="receiptsFeed"></div>
+        <a id="walletAllOffers" class="rc-share" style="display:block;text-align:center;border-radius:8px;padding:10px;text-decoration:none" href="#offers">شوف كل العروض بالفلاتر</a>
       </section>
 
-      <section id="calculatorSection" class="calculator-section mt-7">
-        <div class="text-center mb-5">
-          <h2 class="text-2xl font-black">حاسبة إيقاع الدفع الأسبوعي</h2>
-          <p class="text-[var(--ink-3)] text-sm font-bold mt-1">خمس أسئلة سريعة — ونطلع لك أين غالبًا تضيع عليك العوائد</p>
-        </div>
-        <div id="calcQuestions" class="space-y-5"></div>
-        <div id="calcResult" class="calc-result hidden">
-          <div id="calcPhase1" class="calc-result-phase text-[var(--ink-2)] font-black"></div>
-          <div id="calcPhase2" class="calc-result-phase text-[var(--ink-2)] font-black mt-3"></div>
-          <div id="calcPhase3" class="calc-result-phase mt-4"></div>
-          <div id="calcPrepaidNote" class="calc-prepaid-note">كل هذا بدون بطاقة ائتمانية — ببطاقات مسبقة الشحن ومحافظ رقمية</div>
-          <button id="calcCta" class="source-btn mt-5 px-5 py-3" type="button">وريني العروض المناسبة ←</button>
-        </div>
-      </section>
-
-      <section id="paymentMapWrap" class="mt-5 hidden"></section>
-
-      <section class="mt-7">
-        <div class="flex items-center justify-between gap-3 mb-4">
-          <div>
-            <h2 class="text-2xl font-black">مختارات لك</h2>
-            <p class="text-[var(--ink-3)] text-sm font-semibold">أفضل 6 عروض نشطة الآن</p>
-          </div>
-        </div>
-        <div id="homeOffersGrid" class="offers-grid"></div>
-      </section>
+      <button id="walletAddBtn" class="wallet-add" type="button">+ اختار بطاقاتك</button>
+      <p class="wfoot" data-ar="عروضي دليل مستقل، مش تابع لأي بنك. شروط صفحة المزود هي المرجع النهائي." data-en="Oroodi is an independent guide, not affiliated with any bank. The provider’s terms are the final authority.">عروضي دليل مستقل، مش تابع لأي بنك. شروط صفحة المزود هي المرجع النهائي.</p>
     </section>
 
     <section id="page-offers" class="page-section" data-page="offers">
@@ -926,6 +1039,9 @@
     const CACHE_KEY = "oroodi_cache_v2";
     const SAVED_KEY = "oroodi_saved_v2";
     const SIGNUP_KEY = "oroodi_signup_shown";
+    // مفتاح بطاقات محفظة الإيصالات — جديد ومعمول بقرار DEC مقترح (جلسة 15/10).
+    // ملاحظة: أوضاع الفلاتر القديمة (م= وت=) في الروابط بتترجم للمزود/النوع زي ما هي.
+    const CARDS_KEY = "oroodi_cards_v2";
 
 const CATEGORY_IMAGES = {
   fuel: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C0390A"/><stop offset="1" stop-color="#7A1E00"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#fg)"/><rect x="14" y="22" width="22" height="28" rx="4" fill="none" stroke="white" stroke-width="2.5" opacity="0.9"/><rect x="17" y="16" width="16" height="8" rx="3" fill="white" opacity="0.85"/><path d="M36 28 Q46 28 46 36 L46 44" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/><rect x="42" y="42" width="8" height="5" rx="2.5" fill="white" opacity="0.9"/><rect x="17" y="26" width="16" height="10" rx="2" fill="white" opacity="0.25"/><circle cx="46" cy="50" r="2" fill="white" opacity="0.7"/></svg>`,
@@ -1623,7 +1739,12 @@ const CATEGORY_IMAGES = {
     let _lastResult = [];
     let currentPage = "home";
     let PREPAID_MODE = false;
-    let calcState = { household: "", grocery: "", fuel: "", dining: "", payment: "" };
+    // محفظة الإيصالات: البطاقات المختارة (أسماء مزودين من offers.json) + قسم الفيد الحالي
+    let walletPicked = [];
+    let walletAutoSelect = true;
+    let walletCat = "";
+    const WALLET_CARD_STYLES = ["wc1","wc2","wc3","wc4","wc5","wc6","wc7","wc8"];
+    const WALLET_CAT_LABELS = { fuel: "بنزين", dining: "مطاعم", shopping: "تسوق", travel: "سفر", grocery: "سوبرماركت", general: "عام" };
     const els = {};
 
     // ═══ 2. UTILS ═══
@@ -1653,10 +1774,17 @@ const CATEGORY_IMAGES = {
       return normalizeText(str).replace(/\s+/g, "-").replace(/[^؀-ۿ\w-]/g, "");
     }
     function getDaysLeft(expiryDate) {
-      const end = new Date(`${expiryDate}T23:59:59`);
-      return Math.ceil((end.getTime() - Date.now()) / 86400000);
+      // Calendar dates in Riyadh, not the visitor's device timezone.
+      const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Riyadh", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+      return Math.round((Date.parse(expiryDate + "T00:00:00Z") - Date.parse(today + "T00:00:00Z")) / 86400000);
     }
     function formatDays(days) {
+      if (uiLang === "en") {
+        if (days < 0) return "Expired";
+        if (days === 0) return "Ends today";
+        if (days === 1) return "Ends tomorrow";
+        return `Ends in ${days} days`;
+      }
       if (days < 0) return "منتهي";
       if (days === 0) return "ينتهي اليوم!";
       if (days === 1) return "ينتهي غداً";
@@ -1684,14 +1812,17 @@ const CATEGORY_IMAGES = {
       return { fuel: "⛽", dining: "🍽️", shopping: "🛍️", travel: "✈️", grocery: "🛒", general: "📦" }[category] || "📦";
     }
     function categoryLabel(category) {
-      return { fuel: "بنزين", dining: "مطاعم", shopping: "تسوق", travel: "سفر", grocery: "سوبرماركت", general: "عام" }[category] || "عام";
+      const ar = { fuel: "بنزين", dining: "مطاعم", shopping: "تسوق", travel: "سفر", grocery: "سوبرماركت", general: "عام" };
+      const en = { fuel: "Fuel", dining: "Dining", shopping: "Shopping", travel: "Travel", grocery: "Groceries", general: "General" };
+      return tr(ar[category] || ar.general, en[category] || en.general);
     }
-    function providerTypeLabel(type) { return { bank: "بنك", wallet: "محفظة", neobank: "نيوبنك", bnpl: "BNPL" }[type] || "مزود"; }
-    function offerTypeLabel(type) { return { cashback: "كاشباك", discount: "خصم", points: "نقاط", installment: "تقسيط" }[type] || type; }
-    function networkLabel(network) { return { mada: "مدى", visa: "Visa", mastercard: "Mastercard", apple_pay: "Apple Pay" }[network] || network; }
+    function providerTypeLabel(type) { return tr({ bank: "بنك", wallet: "محفظة", neobank: "نيوبنك", bnpl: "تقسيط" }[type] || "مزود", { bank: "Bank", wallet: "Wallet", neobank: "Digital bank", bnpl: "Buy now, pay later" }[type] || "Provider"); }
+    function offerTypeLabel(type) { return tr({ cashback: "كاشباك", discount: "خصم", points: "نقاط", installment: "تقسيط" }[type] || type, { cashback: "Cashback", discount: "Discount", points: "Points", installment: "Installments" }[type] || type); }
+    function networkLabel(network) { return { mada: tr("مدى", "mada"), visa: "Visa", mastercard: "Mastercard", apple_pay: "Apple Pay" }[network] || network; }
     function stars(score) { return `<span class="star-filled">${"★".repeat(score)}</span><span class="star-empty">${"☆".repeat(5 - score)}</span>`; }
     function formatRelativeTime(ts) {
-      if (!ts) return "غير متاح";
+      if (!ts || !Number.isFinite(Date.parse(ts))) return tr("غير متاح", "Unavailable");
+      if (uiLang === 'en') return new Date(ts).toLocaleDateString('en-GB');
       const date = new Date(ts);
       if (isNaN(date.getTime())) return "غير متاح";
       const diff = Math.max(0, Math.floor((Date.now() - date.getTime()) / 60000));
@@ -1706,20 +1837,37 @@ const CATEGORY_IMAGES = {
       const mo = Math.floor(d / 30);
       return mo === 1 ? "منذ شهر" : `منذ ${mo} أشهر`;
     }
+    function ce(tag, cls, text) {
+      const e = document.createElement(tag);
+      if (cls) e.className = cls;
+      if (text != null) e.textContent = text;
+      return e;
+    }
+    function fmtDate(d) {
+      try { return new Date(`${d}T00:00:00`).toLocaleDateString(uiLang === "en" ? "en-GB" : "ar-EG", { day: "numeric", month: "long", year: "numeric" }); }
+      catch (e) { return String(d); }
+    }
     function resetMemo() { _lastKey = ""; _lastResult = []; }
 
     // ═══ 3. DATA VALIDATION ═══
     function isValidOffer(offer) {
       if (!offer || typeof offer !== "object") return false;
       const required = ["id","title","description","providerName","providerType","offerType","value","category","compatibleWith","expiryDate","sourceUrl","terms"];
-      const hasRequired = required.every(f => offer[f] !== undefined && offer[f] !== null && offer[f] !== "");
+      const hasRequired = required.every(f => f === "compatibleWith" || (typeof offer[f] === "string" && offer[f].trim() !== ""));
+      const expiry = typeof offer.expiryDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(offer.expiryDate) ? new Date(offer.expiryDate + 'T00:00:00Z') : new Date(NaN);
+      let safeSource = false;
+      try { const url = new URL(offer.sourceUrl); safeSource = url.protocol === 'https:' && Boolean(url.hostname) && !url.username && !url.password; } catch (_) { /* invalid URL */ }
       return Boolean(
         hasRequired &&
         Array.isArray(offer.compatibleWith) &&
         ["bank","wallet","neobank","bnpl"].includes(offer.providerType) &&
         ["cashback","discount","points","installment"].includes(offer.offerType) &&
         ["dining","shopping","travel","fuel","grocery","general"].includes(offer.category) &&
-        !isNaN(new Date(`${offer.expiryDate}T23:59:59`).getTime())
+        safeSource &&
+        Number.isFinite(expiry.getTime()) && expiry.toISOString().slice(0,10) === offer.expiryDate &&
+        offer.compatibleWith.every(n => ['mada','visa','mastercard','apple_pay'].includes(n)) &&
+        (offer.promoCode == null || typeof offer.promoCode === 'string') &&
+        (offer.merchantName == null || typeof offer.merchantName === 'string')
       );
     }
     function sanitizeOffers(rawOffers) {
@@ -1753,14 +1901,15 @@ const CATEGORY_IMAGES = {
     }
     function setData(payload) {
       const sanitized = sanitizePayload(payload, new Date().toISOString());
-      OFFERS_DATA = sanitized.offers.length ? sanitized.offers : sanitizeOffers(INLINE_FALLBACK);
+      OFFERS_DATA = sanitized.offers;
+      if (walletAutoSelect) walletPicked = walletProviders();
       LAST_UPDATED = sanitized.lastUpdated || new Date().toISOString();
       resetMemo();
     }
     function loadData() {
       savedIds = readJson(SAVED_KEY, []);
       const cache = readJson(CACHE_KEY, null);
-      if (cache && Array.isArray(cache.offers) && cache.offers.length) {
+      if (cache && Array.isArray(cache.offers) && cache.offers.every(isValidOffer)) {
         setData(cache);
       } else {
         setData({ lastUpdated: new Date().toISOString(), offers: INLINE_FALLBACK });
@@ -1772,8 +1921,14 @@ const CATEGORY_IMAGES = {
         const res = await fetch(DATA_SOURCE_URL, { cache: "no-store" });
         if (!res.ok) throw new Error("fetch failed");
         const freshRaw = await res.json();
+        // Reject the entire response before changing memory or storage, including mixed payloads.
+        if (!freshRaw || !Array.isArray(freshRaw.offers) ||
+            typeof freshRaw.lastUpdated !== "string" || !Number.isFinite(Date.parse(freshRaw.lastUpdated)) ||
+            !freshRaw.offers.every(isValidOffer) ||
+            new Set(freshRaw.offers.map(o => o.id)).size !== freshRaw.offers.length) {
+          throw new Error("invalid offers payload");
+        }
         const fresh = sanitizePayload(freshRaw, new Date().toISOString());
-        if (!fresh.offers.length) throw new Error("empty offers");
         const cache = readJson(CACHE_KEY, null);
         const cacheTs = cache && cache.lastUpdated ? cache.lastUpdated : "";
         if (!cache || hasCacheFreshness(fresh.lastUpdated, cacheTs)) {
@@ -1786,7 +1941,7 @@ const CATEGORY_IMAGES = {
         if (manual) showToast("العروض محدثة بالفعل", "info");
         return false;
       } catch (e) {
-        if (manual) showToast("تعذر تحديث العروض حالياً", "error");
+        showToast("تعذر تحديث العروض حالياً", "error");
         return false;
       }
     }
@@ -1888,7 +2043,8 @@ const CATEGORY_IMAGES = {
       currentPage = allowed.includes(page) ? page : "home";
       document.querySelectorAll(".page-section").forEach(s => { s.classList.toggle("active", s.dataset.page === currentPage); });
       document.querySelectorAll(".nav-item").forEach(item => { item.classList.toggle("active", item.dataset.nav === currentPage); });
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      document.getElementById("filter-bar").classList.toggle("hidden", currentPage === "home");
+      window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
     }
     function handleHash() {
       const { page } = getHashParts();
@@ -1941,89 +2097,15 @@ const CATEGORY_IMAGES = {
       syncFilterControls();
       updateActiveChips();
       renderHeaderMeta();
-      renderStats();
-      renderFuelBanner();
-      renderFeaturedScroll();
-      renderCalculator();
-      renderHomeOffers(withFade);
+      renderWalletAll();
       renderOffers(withFade);
       renderProviderPages(withFade);
       renderSaved(withFade);
+      translateWalletUI();
     }
     function renderHeaderMeta() {
-      if (els.lastUpdatedText) els.lastUpdatedText.textContent = `آخر تحديث: ${formatRelativeTime(LAST_UPDATED)}`;
+      if (els.lastUpdatedText) els.lastUpdatedText.textContent = `${tr("آخر تحديث", "Updated")}: ${formatRelativeTime(LAST_UPDATED)}`;
       if (els.freshnessText) els.freshnessText.textContent = formatRelativeTime(LAST_UPDATED);
-    }
-    function renderStats() {
-      if (!els.statsRow) return;
-      const active = OFFERS_DATA.filter(o => getDaysLeft(o.expiryDate) >= 0);
-      const highestCashback = active.filter(o => o.offerType === "cashback").reduce((max, o) => Math.max(max, valueNumeric(o)), 0);
-      const soon = active.filter(o => getDaysLeft(o.expiryDate) <= 7).length;
-      els.statsRow.innerHTML = `
-        <article class="stat-card"><p class="muted-text mb-3">عدد العروض النشطة</p><strong class="hero-number text-[var(--brand)]">${active.length}</strong><p class="muted-text mt-3">بعد استبعاد العروض المنتهية</p></article>
-        <article class="stat-card"><p class="muted-text mb-3">أعلى كاشباك %</p><strong class="hero-number text-[var(--gain)]">${highestCashback || 0}%</strong><p class="muted-text mt-3">محسوب من قيمة العرض</p></article>
-        <article class="stat-card"><p class="muted-text mb-3">ينتهي قريباً</p><strong class="hero-number text-[var(--urgent)]">${soon}</strong><p class="muted-text mt-3">خلال 7 أيام أو أقل</p></article>
-      `;
-      if (els.heroPills) {
-        els.heroPills.innerHTML = `
-          <span class="hero-pill">${active.length} عرض نشط</span>
-          <span class="hero-pill">أعلى كاشباك ${highestCashback || 0}%</span>
-          <span class="hero-pill">${soon} قريب الانتهاء</span>
-        `;
-      }
-    }
-    function renderFuelBanner() {
-      if (!els.fuelBannerWrap) return;
-      const fuelOffers = sortOffers(OFFERS_DATA.filter(o => o.category === "fuel" && getDaysLeft(o.expiryDate) >= 0), "excitement");
-      if (!fuelOffers.length) { els.fuelBannerWrap.innerHTML = ""; return; }
-      const top = fuelOffers[0];
-      els.fuelBannerWrap.innerHTML = `
-        <button id="fuelBannerBtn" class="fuel-banner w-full text-right p-5 md:p-6" type="button">
-          <svg width="96" height="96" viewBox="0 0 64 64"
-            style="position:absolute;bottom:-12px;left:8px;opacity:0.12;pointer-events:none"
-            aria-hidden="true">
-            <rect x="14" y="22" width="22" height="28" rx="4"
-              fill="none" stroke="white" stroke-width="2.5"/>
-            <rect x="17" y="16" width="16" height="8" rx="3"
-              fill="white"/>
-            <path d="M36 28 Q46 28 46 36 L46 44"
-              fill="none" stroke="white" stroke-width="2.5"
-              stroke-linecap="round"/>
-            <rect x="42" y="42" width="8" height="5" rx="2.5"
-              fill="white"/>
-            <circle cx="46" cy="50" r="2" fill="white"/>
-          </svg>
-          <span class="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-sm font-black mb-4"><span style="display:inline-flex;align-items:center;gap:6px"><svg width="20" height="20" viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="22" width="22" height="28" rx="4" fill="none" stroke="white" stroke-width="2.5" opacity="0.9"/><rect x="17" y="16" width="16" height="8" rx="3" fill="white" opacity="0.85"/><path d="M36 28 Q46 28 46 36 L46 44" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/><rect x="42" y="42" width="8" height="5" rx="2.5" fill="white" opacity="0.9"/><rect x="17" y="26" width="16" height="10" rx="2" fill="white" opacity="0.25"/><circle cx="46" cy="50" r="2" fill="white" opacity="0.7"/></svg>عرض بنزين مميز</span></span>
-          <strong class="block text-5xl font-black leading-none mb-3" style="color:#F5E8C8;">${escapeHTML(top.value)}</strong>
-          <span class="block text-xl font-black mb-2">${escapeHTML(top.providerName)}</span>
-          <span class="block text-white/80 text-sm font-bold">اضغط لعرض كل عروض البنزين ◄</span>
-        </button>`;
-    }
-    function renderFeaturedScroll() {
-      if (!els.featuredScroll) return;
-      const featured = sortOffers(OFFERS_DATA.filter(o => getDaysLeft(o.expiryDate) >= 0), "excitement").slice(0, 3);
-      els.featuredScroll.innerHTML = featured.map((offer, index) => {
-        const color = getCatColor(offer.category);
-        const days = getDaysLeft(offer.expiryDate);
-        const score = calcExcitement(offer);
-        const img = CATEGORY_IMAGES[offer.category] || CATEGORY_IMAGES.general;
-        return `
-          <article class="featured-card" style="border-color:${color};animation-delay:${Math.min(index * 0.03, 0.24)}s">
-            <div class="featured-card-img" aria-hidden="true">${img}</div>
-            <div class="featured-card-content">
-              <div class="flex items-start justify-between gap-3 mb-4">
-                <div><p class="text-[var(--ink-3)] text-sm font-black mb-1">${escapeHTML(offer.providerName)}</p><h3 class="text-lg font-black leading-snug line-clamp-2-custom">${escapeHTML(offer.title)}</h3></div>
-                <span class="text-3xl font-black whitespace-nowrap" style="color:${color}">${escapeHTML(offer.value)}</span>
-              </div>
-              <div class="flex items-center justify-between gap-2 mt-auto"><span class="text-xs font-black text-[var(--ink-3)]">${formatDays(days)}</span><span class="text-base leading-none">${stars(score)}</span></div>
-            </div>
-          </article>`;
-      }).join("");
-    }
-    function renderHomeOffers(withFade = false) {
-      if (!els.homeOffersGrid) return;
-      const top6 = sortOffers(OFFERS_DATA.filter(o => getDaysLeft(o.expiryDate) >= 0), "excitement").slice(0, 6);
-      els.homeOffersGrid.innerHTML = top6.map((o, i) => renderCard(o, i, withFade)).join("");
     }
     function renderOffers(withFade = false) {
       if (!els.offersGrid) return;
@@ -2053,7 +2135,7 @@ const CATEGORY_IMAGES = {
         <section class="provider-group">
           <div class="provider-group-header">
             <div class="flex items-center gap-3"><span class="logo-mark" style="width:36px;height:36px;font-size:.85rem">${escapeHTML(provider.charAt(0))}</span><div><strong class="text-lg font-black block">${escapeHTML(provider)}</strong><p class="text-[var(--ink-3)] text-sm font-bold">${escapeHTML(providerTypeLabel(offers[0].providerType))}</p></div></div>
-            <span class="provider-count-badge">${offers.length} عرض</span>
+            <span class="provider-count-badge">${offers.length} ${tr("عرض", "offers")}</span>
           </div>
           <div class="offers-grid p-4">${offers.map((o, i) => renderCard(o, i, withFade)).join("")}</div>
         </section>`).join("");
@@ -2072,6 +2154,7 @@ const CATEGORY_IMAGES = {
       els.savedOffersGrid.innerHTML = savedOffers.map((o, i) => renderCard(o, i, withFade)).join("");
     }
     function renderCard(offer, index = 0, withFade = false) {
+      const sourceNote = tr("", "Offer title and terms are from the Arabic source.");
       const days = getDaysLeft(offer.expiryDate);
       const urgent = days >= 0 && days <= 3;
       const isFinalDay = days === 0 || days === 1;
@@ -2080,28 +2163,27 @@ const CATEGORY_IMAGES = {
       const score = calcExcitement(offer);
       const isPrepaid = ["wallet", "neobank"].includes(offer.providerType);
       const networks = offer.compatibleWith.map(n => `<span class="net-badge net-${n}">${escapeHTML(networkLabel(n))}</span>`).join("");
-      const prepaidBadge = isPrepaid ? `<div class="prepaid-badge">مسبقة الشحن</div>` : "";
-      const middleBlock = isPrepaid ? `
-        <div class="honesty-row"><div class="honesty-item">بدون فوائد</div><div class="honesty-item">بدون اشتراك سنوي</div><div class="honesty-item">بدون تقديم ائتماني</div></div>
-      ` : `
-        <div class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3"><button class="terms-toggle mb-2" data-action="toggle-terms" type="button">▼ الشروط والأحكام</button><p class="terms-text collapsed text-sm leading-7 text-[var(--ink-2)] font-semibold">${escapeHTML(offer.terms)}</p></div>
+      const prepaidBadge = isPrepaid ? `<div class="prepaid-badge">${tr("مسبقة الشحن", "Prepaid")}</div>` : "";
+      const middleBlock = `
+        <div class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3"><button class="terms-toggle mb-2" data-action="toggle-terms" type="button">${tr("▼ الشروط والأحكام", "▼ Terms and conditions")}</button><p lang="ar" dir="auto" class="terms-text collapsed text-sm leading-7 text-[var(--ink-2)] font-semibold">${escapeHTML(offer.terms)}</p></div>
       `;
-      const promo = offer.promoCode !== null ? `<div class="grid grid-cols-[1fr_auto] gap-2 items-center"><span class="promo-chip">${escapeHTML(offer.promoCode)}</span><button class="copy-btn" data-action="copy" data-code="${escapeHTML(offer.promoCode)}" type="button">نسخ الكود</button></div>` : "";
+      const promo = offer.promoCode !== null ? `<div class="grid grid-cols-[1fr_auto] gap-2 items-center"><span class="promo-chip">${escapeHTML(offer.promoCode)}</span><button class="copy-btn" data-action="copy" data-code="${escapeHTML(offer.promoCode)}" type="button">${tr("نسخ الكود", "Copy code")}</button></div>` : "";
       return `
         <article class="offer-card category-${escapeHTML(offer.category)}" data-offer-id="${escapeHTML(offer.id)}" style="animation-delay:${Math.min(index * 0.03, 0.24)}s">
           ${prepaidBadge}
           <div class="card-header">
             <div class="category-icon-badge" aria-hidden="true">${getCategoryIcon(offer.category)}</div>
-            <div class="min-w-0"><div class="flex flex-wrap items-center gap-2 mb-2"><span class="provider-badge">${escapeHTML(providerTypeLabel(offer.providerType))}</span><span class="text-xs font-black text-[var(--ink-3)]">${escapeHTML(offer.providerName)}</span>${offer.merchantName ? `<span class="merchant-tag">لدى ${escapeHTML(offer.merchantName)}</span>` : ""}</div><h3 class="card-title">${escapeHTML(offer.title)}</h3></div>
+            <div class="min-w-0"><div class="flex flex-wrap items-center gap-2 mb-2"><span class="provider-badge">${escapeHTML(providerTypeLabel(offer.providerType))}</span><span class="text-xs font-black text-[var(--ink-3)]">${escapeHTML(offer.providerName)}</span>${offer.merchantName ? `<span class="merchant-tag">${tr("لدى", "At")} ${escapeHTML(offer.merchantName)}</span>` : ""}</div><h3 class="card-title"><button type="button" class="card-title" style="text-align:start;background:none;border:0;color:inherit" data-action="details" data-id="${escapeHTML(offer.id)}" lang="ar" dir="auto">${escapeHTML(offer.title)} <span lang="${uiLang}">${tr("التفاصيل", "Details")}</span></button></h3></div>
             <div class="card-value value-${escapeHTML(offer.category)}">${escapeHTML(offer.value)}</div>
           </div>
-          <p class="text-sm leading-7 text-[var(--ink-2)] font-semibold line-clamp-2-custom">${escapeHTML(offer.description)}</p>
+          <p lang="ar" dir="auto" class="text-sm leading-7 text-[var(--ink-2)] font-semibold line-clamp-2-custom">${escapeHTML(offer.description)}</p>
+          ${sourceNote ? `<p class="source-language-note">${sourceNote}</p>` : ""}
           ${middleBlock}
-          <div class="flex flex-wrap items-center gap-2"><span class="${expiryClass}">${escapeHTML(formatDays(days))}</span>${urgent ? `<span class="urgent-badge ${isFinalDay ? "final-day" : ""}">⚡ عاجل</span>` : ""}</div>
+          <div class="flex flex-wrap items-center gap-2"><span class="${expiryClass}">${escapeHTML(formatDays(days))}</span>${urgent ? `<span class="urgent-badge ${isFinalDay ? "final-day" : ""}">⚡ ${tr("عاجل", "Ending soon")}</span>` : ""}</div>
           <div class="flex flex-wrap items-center gap-2">${networks}</div>
-          <div class="flex items-center justify-between gap-3 rounded-2xl bg-[var(--surface)] px-3 py-2"><span class="text-sm font-black text-[var(--ink-3)]">درجة الحماس</span><span class="text-lg leading-none" aria-label="${score} من 5">${stars(score)}</span></div>
+          <div class="flex items-center justify-between gap-3 rounded-2xl bg-[var(--surface)] px-3 py-2"><span class="text-sm font-black text-[var(--ink-3)]">${tr("درجة الحماس", "Offer score")}</span><span class="text-lg leading-none" aria-label="${score} ${tr("من", "out of")} 5">${stars(score)}</span></div>
           ${promo}
-          <div class="mt-auto grid grid-cols-3 gap-2"><button class="save-btn ${saved ? "saved" : ""}" data-action="save" data-id="${escapeHTML(offer.id)}" type="button">${saved ? "♥ محفوظ" : "♡ حفظ"}</button><a class="source-btn text-center" href="${escapeHTML(offer.sourceUrl)}" target="_blank" rel="noopener noreferrer">المصدر</a><button class="used-it-btn" data-action="used-it" data-id="${escapeHTML(offer.id)}" type="button">استخدمته</button></div>
+          <div class="mt-auto grid grid-cols-3 gap-2"><button class="save-btn ${saved ? "saved" : ""}" data-action="save" data-id="${escapeHTML(offer.id)}" type="button">${saved ? tr("♥ محفوظ", "♥ Saved") : tr("♡ حفظ", "♡ Save")}</button><a class="source-btn text-center" href="${escapeHTML(offer.sourceUrl)}" target="_blank" rel="noopener noreferrer">${tr("المصدر", "Source")}</a><button class="used-it-btn" data-action="used-it" data-id="${escapeHTML(offer.id)}" type="button">${tr("استخدمته", "Used it")}</button></div>
         </article>`;
     }
     function renderProviderOptions() {
@@ -2111,88 +2193,242 @@ const CATEGORY_IMAGES = {
       els.providerFilter.innerHTML = `<option value="">كل المزودين</option>` + providers.map(p => `<option value="${escapeHTML(p)}" ${p === current ? "selected" : ""}>${escapeHTML(p)}</option>`).join("");
     }
 
-    // ═══ 8. CALCULATOR & MAP ═══
-    const CALC_QUESTIONS = [
-      { key:"household", q:"تصرف على البيت ولا على نفسك بس؟", opts:[["house","على البيت"],["self","على نفسي"],["both","الاثنين"]] },
-      { key:"grocery", q:"السوبرماركت — كم في الأسبوع تقريباً؟", opts:[["lt200","أقل من 200"],["200_500","200-500"],["500_1000","500-1000"],["1000plus","1000+"]] },
-      { key:"fuel", q:"البنزين — كم تعبّي في الأسبوع؟", opts:[["50","50"],["100","100"],["200","200"],["300plus","300+"]] },
-      { key:"dining", q:"الأكل برّا — مطعم ولا دليفري؟", opts:[["restaurant","مطعم مع الناس"],["delivery","دليفري بالبيت"],["half","نص-نص"],["rare","نادراً"]] },
-      { key:"payment", q:"تدفع بإيش غالباً؟", opts:[["mada","مدى"],["credit","ائتمانية"],["wallet","محفظة رقمية"],["no_credit","ما أحب الائتمان"]] }
-    ];
-    function renderCalculator() {
-      if (!els.calcQuestions) return;
-      els.calcQuestions.innerHTML = CALC_QUESTIONS.map((item, idx) => `
-        <div class="calc-step" data-step="${idx + 1}"><div class="calc-question">${escapeHTML(item.q)}</div><div class="calc-options">${item.opts.map(([value, label]) => `<button class="calc-option ${calcState[item.key] === value ? "selected" : ""}" data-calc-key="${item.key}" data-value="${value}" type="button">${escapeHTML(label)}</button>`).join("")}</div></div>
-      `).join("");
+    // ═══ 8. محفظة الإيصالات ═══
+    let uiLang = "ar";
+    const tr = (ar, en) => uiLang === "en" ? en : ar;
+    // Static interface strings only; source content and provider names stay untouched.
+    const BROWSE_COPY = {
+      '#page-offers h1': ['العروض', 'Offers'],
+      '#page-cards h1': ['البطاقات البنكية', 'Bank cards'],
+      '#page-cards h1 + p': ['عروض البنوك مرتبة حسب المزود', 'Bank offers grouped by provider'],
+      '#page-wallets h1': ['المحافظ والتقسيط', 'Wallets and installments'],
+      '#page-wallets h1 + p': ['محافظ، نيوبنوك، وخدمات BNPL', 'Wallets, digital banks and buy now, pay later'],
+      '#page-saved h1': ['المحفوظات', 'Saved offers'],
+      '#emptyOffers h2': ['لم يُعثر على عروض تطابق بحثك — جرّب تغيير الفلاتر', 'No matching offers — try changing filters'],
+      '#emptyOffers p': ['خفف البحث أو اختر فئة أخرى', 'Try a shorter search or another category'],
+      '#emptyCards h2': ['لا توجد عروض للبطاقات البنكية حالياً', 'No bank card offers right now'],
+      '#emptyCards p, #emptyWallets p': ['غيّر الفلاتر أو حدّث البيانات لاحقًا', 'Change filters or refresh later'],
+      '#emptyWallets h2': ['لا توجد عروض للمحافظ حالياً', 'No wallet offers right now'],
+      '#emptySaved h2': ['لم تحفظ أي عروض بعد', 'No saved offers yet'],
+      '#emptySaved p': ['اضغط على القلب داخل أي عرض لحفظه', 'Use the heart on an offer to save it'],
+      '#clearFiltersBtn': ['تصفير', 'Clear filters'],
+      '#expiringSoonFilter + span': ['⚡ قريب الانتهاء', '⚡ Ending soon'],
+      '#savedOnlyFilter + span': ['❤️ محفوظة', '❤️ Saved'],
+      '#prepaidBanner': ['يعرض فقط: محافظ رقمية + مدى + تقسيط — بدون ائتمان', 'Showing wallets, mada and installments'],
+      '#offerTypeFilter option[value=""]': ['كل الأنواع', 'All types'],
+      '#networkFilter option[value=""]': ['كل الشبكات', 'All networks'],
+      '#providerFilter option[value=""]': ['كل المزودين', 'All providers'],
+      '#sortFilter option[value="excitement"]': ['الأكثر حماسًا', 'Offer score'],
+      '#sortFilter option[value="value"]': ['الأعلى قيمة', 'Highest value'],
+      '#sortFilter option[value="expiry"]': ['الأقرب انتهاءً', 'Ending soonest'],
+      '#sortFilter option[value="newest"]': ['الأحدث', 'Newest']
+    };
+    function translateBrowseUI() {
+      Object.entries(BROWSE_COPY).forEach(([selector, words]) => {
+        document.querySelectorAll(selector).forEach(e => { e.textContent = tr(...words); });
+      });
+      document.querySelectorAll('#quickCategoryChips [data-chip-category]').forEach(e => {
+        e.textContent = e.dataset.chipCategory ? categoryLabel(e.dataset.chipCategory) : tr('الكل', 'All');
+      });
+      document.querySelectorAll('#offerTypeFilter option').forEach(e => { if (e.value) e.textContent = offerTypeLabel(e.value); });
+      document.querySelectorAll('#networkFilter option').forEach(e => { if (e.value) e.textContent = networkLabel(e.value); });
+      const labels = [['بحث','Search'], ['نوع العرض','Offer type'], ['الشبكة','Network'], ['المزود','Provider'], ['الترتيب','Sort']];
+      document.querySelectorAll('#filter-bar .sr-only').forEach((e,i) => { e.textContent = tr(...labels[i]); });
+      els.searchInput.placeholder = tr('ابحث: متجر، بنك، بنزين، مطاعم...', 'Search stores, banks or offers…');
+      els.offersCountLabel.textContent = filtered().length ? `${filtered().length} ${tr('عرض متاح', 'offers available')}` : tr('لا توجد نتائج', 'No results');
+      const count = OFFERS_DATA.filter(o => savedIds.includes(o.id)).length;
+      els.savedCountLabel.textContent = count ? `${count} ${tr('عرض محفوظ', 'saved offers')}` : tr('لا توجد عروض محفوظة', 'No saved offers');
+      const attrs = {
+        '#bottom-nav': ['التنقل الرئيسي','Main navigation'], '#quickCategoryChips': ['فلتر الفئات السريع','Category filters'],
+        '#merchantChips': ['المتاجر الأكثر عروضاً','Stores with most offers'], '#refreshBtn': ['تحديث العروض يدويًا','Refresh offers'],
+        '#app-header a': ['عروضي الرئيسية','Oroodi home'], '#page-home section': ['بطاقاتي','My cards'],
+        '#walletChips': ['الأقسام','Categories'], '#page-home > section:nth-of-type(2)': ['العروض المناسبة لبطاقاتك','Offers from your providers']
+      };
+      Object.entries(attrs).forEach(([selector,words]) => { document.querySelector(selector)?.setAttribute('aria-label',tr(...words)); });
+      const bar = document.querySelector('.freshness-bar');
+      bar.firstChild.textContent = tr('آخر تحديث: ', 'Updated: ');
+      bar.lastChild.textContent = tr(' — محاولة تحديث كل ساعة', ' — refresh attempted hourly');
     }
-    function calculateWeeklySpend() {
-      const h = { house: 1.25, self: 0.8, both: 1.0 }[calcState.household] || 1;
-      const grocery = { lt200: 150, "200_500": 350, "500_1000": 750, "1000plus": 1200 }[calcState.grocery] || 0;
-      const fuel = { "50": 50, "100": 100, "200": 200, "300plus": 350 }[calcState.fuel] || 0;
-      const dining = { restaurant: 220, delivery: 180, half: 200, rare: 40 }[calcState.dining] || 0;
-      return Math.round((grocery * h) + fuel + dining);
+    function translateWalletUI() {
+      translateBrowseUI();
+      document.documentElement.lang = uiLang;
+      document.documentElement.dir = uiLang === "ar" ? "rtl" : "ltr";
+      document.body.style.direction = document.documentElement.dir;
+      document.title = tr("عروضي | عروض بطاقاتك", "Oroodi | Offers for your cards");
+      document.querySelectorAll("[data-ar][data-en]").forEach(e => { e.textContent = e.dataset[uiLang]; });
+      document.getElementById("languageBtn").textContent = tr("English", "عربي");
+      document.getElementById("languageBtn").setAttribute("aria-label", tr("Switch to English", "التحويل للعربية"));
+      document.getElementById("languageBtn").lang = tr("en", "ar");
+      document.querySelector("#page-home .wsection-title").textContent = tr("بطاقاتي", "My cards");
+      document.querySelector("#page-home section .wallet-note").textContent = tr("اختار البنك أو المحفظة. الاختيار بيتحفظ على جهازك بس، من غير أرقام بطاقات.", "Choose your bank or wallet. Selection stays on this device only. No card numbers.");
+      document.querySelector(".wcount .wallet-note").textContent = tr("عرض من مزودين بطاقاتك", "offers from your selected providers");
+      document.getElementById("walletAllOffers").textContent = tr("كل العروض والفلاتر", "All offers and filters");
+      document.getElementById("walletAddBtn").textContent = tr("+ اختار بطاقاتك", "+ Choose your cards");
+      document.getElementById("refreshBtn").textContent = tr("تحديث", "Refresh");
+      const nav = { home: ["الرئيسية", "Home"], offers: ["العروض", "Offers"], cards: ["البنوك", "Banks"], wallets: ["المحافظ", "Wallets"], saved: ["المحفوظة", "Saved"] };
+      document.querySelectorAll("[data-nav]").forEach(e => { const label = e.querySelector("span:last-child"); if (label && nav[e.dataset.nav]) label.textContent = tr(...nav[e.dataset.nav]); });
+      renderHeaderMeta();
     }
-    function gainEquivalent(annual) {
-      if (annual < 500) return "رحلة يوم عيلي";
-      if (annual < 1000) return "هاتف جوّال جيد";
-      if (annual < 2000) return "رحلة عمرة";
-      if (annual < 3000) return "تذكرتَي طيران";
-      return "رحلة عائلية";
+    function openReceipt(offer, trigger) {
+      if (document.getElementById("receiptDialog")) return;
+      const dialog = ce("dialog", "receipt-dialog");
+      dialog.id = "receiptDialog";
+      dialog.setAttribute("aria-labelledby", "receiptTitle");
+      const close = ce("button", "receipt-close", tr("إغلاق", "Close"));
+      close.type = "button";
+      close.autofocus = true;
+      close.onclick = () => dialog.close();
+      const receipt = renderReceipt(offer, 0);
+      const title = receipt.querySelector(".rc-what");
+      title.id = "receiptTitle";
+      dialog.append(close, receipt);
+      dialog.addEventListener("close", () => { dialog.remove(); trigger?.focus(); });
+      dialog.addEventListener("click", e => { if (e.target === dialog) { const b = dialog.getBoundingClientRect(); if (e.clientX < b.left || e.clientX > b.right || e.clientY < b.top || e.clientY > b.bottom) dialog.close(); } });
+      document.body.append(dialog);
+      dialog.showModal();
     }
-    function preferredCategoriesFromCalc() {
-      const cats = [];
-      if (calcState.grocery) cats.push("grocery");
-      if (calcState.fuel) cats.push("fuel");
-      if (calcState.dining && calcState.dining !== "rare") cats.push("dining");
-      return cats.length ? cats : ["general"];
+    async function shareReceipt(offer, button) {
+      const text = `${offer.value} — ${offer.title} · ${offer.providerName} · ${offer.expiryDate}\n${offer.terms}\n${offer.sourceUrl}`;
+      try {
+        if (navigator.share) await navigator.share({ title: tr("عروضي", "Oroodi"), text });
+        else if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(text);
+          button.textContent = tr("اتنسخ", "Copied");
+        } else throw new Error("Clipboard unavailable");
+      } catch (e) {
+        if (e.name !== "AbortError") {
+          const manual = ce("textarea", "manual-share");
+          manual.value = text;
+          manual.readOnly = true;
+          manual.setAttribute("aria-label", tr("نص المشاركة — انسخه يدويًا", "Share text — copy manually"));
+          button.closest(".receipt").append(manual);
+          button.textContent = tr("انسخ النص يدويًا", "Copy text manually");
+          manual.focus(); manual.select();
+        }
+      }
     }
-    function completeCalculator() {
-      const done = CALC_QUESTIONS.every(q => calcState[q.key]);
-      if (!done || !els.calcResult) return;
-      PREPAID_MODE = calcState.payment === "no_credit";
-      const weekly = calculateWeeklySpend();
-      const monthly = weekly * 4;
-      const amount = Math.max(30, Math.round(monthly * (PREPAID_MODE ? 0.045 : 0.065)));
-      const annual = amount * 12;
-      els.calcResult.classList.remove("hidden");
-      els.calcPhase1.className = "calc-result-phase text-[var(--ink-2)] font-black";
-      els.calcPhase2.className = "calc-result-phase text-[var(--ink-2)] font-black mt-3";
-      els.calcPhase3.className = "calc-result-phase mt-4";
-      els.calcPhase1.textContent = `في الشهر تصرف ~ ${monthly.toLocaleString("ar-SA")} ريال`;
-      els.calcPhase2.textContent = "تستحق ترجع لك منهم...";
-      els.calcPhase3.innerHTML = `<div class="calc-result-number is-gain">${amount.toLocaleString("ar-SA")} ريال</div><div class="calc-equivalent">في السنة ≈ ${annual.toLocaleString("ar-SA")} — ${gainEquivalent(annual)}</div>`;
-      els.calcPrepaidNote.classList.toggle("visible", PREPAID_MODE);
-      els.calcCta.textContent = `وريني العروض اللي ترجّع لي ${amount.toLocaleString("ar-SA")} ريال ←`;
-      setTimeout(() => els.calcPhase1.classList.add("visible"), 80);
-      setTimeout(() => els.calcPhase2.classList.add("visible"), 680);
-      setTimeout(() => els.calcPhase3.classList.add("visible"), 1280);
-      renderPaymentMap(weekly, amount);
-      maybeShowSignupPrompt(true);
+    // أزرار البطاقات بتتولد أوتوماتيك من أسماء المزودين اللي في offers.json.
+    // من غير أرقام بطاقات ولا لوجوهات بنوك — الاسم النصي واللون بس.
+    function walletProviders() {
+      return [...new Set(OFFERS_DATA.filter(o => getDaysLeft(o.expiryDate) >= 0).map(o => o.providerName))].sort((a, b) => a.localeCompare(b, "ar"));
     }
-    function renderPaymentMap(weekly, amount) {
-      if (!els.paymentMapWrap) return;
-      const cats = preferredCategoriesFromCalc();
-      const rows = cats.map(cat => {
-        const top = sortOffers(OFFERS_DATA.filter(o => o.category === cat && getDaysLeft(o.expiryDate) >= 0), "excitement")[0];
-        if (!top) return "";
-        const ratio = { grocery:0.35, fuel:0.25, dining:0.25, shopping:0.15, travel:0.15, general:0.1 }[cat] || 0.1;
-        const gain = Math.max(5, Math.round(amount * ratio));
-        return `<div class="payment-map-row"><span style="display:inline-block;width:28px;height:28px;border-radius:8px;background:${getCatColor(cat)};opacity:0.85;flex-shrink:0"></span><span class="map-category">${categoryLabel(cat)}</span><span class="map-card">${escapeHTML(top.providerName)}</span><span class="map-gain">${gain} ريال</span></div>`;
-      }).join("");
-      els.paymentMapWrap.classList.remove("hidden");
-      els.paymentMapWrap.innerHTML = `<div class="payment-map"><div class="payment-map-header">خريطة دفعك هذا الأسبوع</div>${rows}<div class="payment-map-footer"><span class="map-total-label">هالأسبوع تقدر ترجع:</span><span class="map-total-value">${Math.round(amount / 4).toLocaleString("ar-SA")} ريال</span></div></div>`;
+    function renderWalletCards() {
+      const wrap = els.walletCards;
+      if (!wrap) return;
+      const focusedName = wrap.contains(document.activeElement) ? document.activeElement.dataset.provider : null;
+      wrap.replaceChildren();
+      const providers = walletProviders();
+      wrap.classList.toggle("fan", providers.length <= 3);
+      providers.forEach((name, i) => {
+        const b = ce("button", "wcard " + WALLET_CARD_STYLES[i % WALLET_CARD_STYLES.length]);
+        b.type = "button";
+        b.dataset.provider = name;
+        b.setAttribute("aria-pressed", String(walletPicked.includes(name)));
+        b.setAttribute("aria-label", tr("بطاقة ", "Card: ") + name);
+        b.append(ce("span", "card-chip"), ce("b", "", name), ce("small", "", tr("اختيار المزود", "Provider selection")), ce("span", "wtick", "✓"));
+        b.onclick = () => toggleWalletCard(name);
+        wrap.append(b);
+        if (name === focusedName) b.focus({ preventScroll: true });
+      });
+      els.walletClearBtn.textContent = tr("اختار الكل", "Select all");
+      els.walletClearBtn.setAttribute("aria-pressed", String(providers.length > 0 && providers.every(p => walletPicked.includes(p))));
+    }
+    function toggleWalletCard(name) {
+      walletAutoSelect = false;
+      walletPicked = walletPicked.includes(name) ? walletPicked.filter(p => p !== name) : [...walletPicked, name];
+      if (!writeJson(CARDS_KEY, walletPicked)) showToast(tr("الاختيار للجلسة دي بس؛ الحفظ على الجهاز مش متاح.", "Selection is for this session; device storage is unavailable."), "info");
+      renderWalletAll();
+    }
+    function walletMatches(offer) {
+      // A shared card network never implies eligibility at another bank.
+      return walletPicked.includes(offer.providerName);
+    }
+    function renderWalletChips() {
+      const wrap = els.walletChips;
+      if (!wrap) return;
+      const cats = [...new Set(OFFERS_DATA.filter(o => getDaysLeft(o.expiryDate) >= 0 && walletMatches(o)).map(o => o.category))];
+      if (walletCat && !cats.includes(walletCat)) walletCat = "";
+      const focusedCat = wrap.contains(document.activeElement) ? document.activeElement.dataset.category : null;
+      wrap.replaceChildren();
+      ["", ...cats].forEach(cat => {
+        const en = { fuel: "Fuel", dining: "Dining", shopping: "Shopping", travel: "Travel", grocery: "Groceries", general: "General" };
+        const b = ce("button", "wchip", cat ? tr(WALLET_CAT_LABELS[cat] || cat, en[cat] || cat) : tr("الكل", "All"));
+        b.type = "button";
+        b.dataset.category = cat;
+        b.setAttribute("aria-pressed", String(walletCat === cat));
+        b.onclick = () => { walletCat = cat; renderWalletChips(); renderWalletFeed(); };
+        wrap.append(b);
+        if (cat === focusedCat) b.focus({ preventScroll: true });
+      });
+    }
+    function renderReceipt(offer, index) {
+      const r = ce("article", "receipt");
+      const head = ce("div", "rc-head");
+      head.append(ce("span", "", offer.providerName), ce("span", "", tr("إيصال التفاصيل", "Offer receipt")));
+      const big = ce("div", "rc-big");
+      big.append(ce("span", "rc-disc", offer.value));
+      const title = ce("h2", "rc-what", offer.title);
+      title.lang = "ar"; title.dir = "auto";
+      r.append(head, ce("div", "rc-dash"), big, title, ce("div", "rc-dash"));
+      const row = (a, b) => { const x = ce("div", "rc-row"); const v = ce("span", "", b); v.dir = "auto"; x.append(ce("span", "", a), v); return x; };
+      r.append(row(tr("صالح لحد", "Valid until"), fmtDate(offer.expiryDate)), row(tr("الأيام الباقية", "Days left"), String(getDaysLeft(offer.expiryDate))));
+      r.append(row(tr("الشبكات المذكورة", "Listed networks"), (offer.compatibleWith || []).map(n => networkLabel(n)).join(" · ") || tr("مش مذكورة", "Not specified")));
+      r.append(row(tr("الكود", "Promo code"), offer.promoCode || tr("مفيش كود مذكور", "No code specified")));
+      const desc = ce("p", "rc-description", offer.description);
+      const terms = ce("p", "rc-terms", offer.terms);
+      desc.lang = terms.lang = "ar"; desc.dir = terms.dir = "auto";
+      r.append(desc, ce("h3", "", tr("الشروط والأحكام", "Terms and conditions")), terms);
+      if (uiLang === "en") r.append(ce("p", "source-language-note", "Offer wording is retained in its source language (Arabic)."));
+      r.append(ce("div", "rc-why", tr("اختيار البنك مش ضمان أهلية البطاقة. راجع النوع والحدود والاستثناءات في المصدر.", "Selecting a provider does not guarantee card eligibility. Check card type, limits and exclusions at the source.")));
+      const bars = ce("div", "rc-bars"); bars.setAttribute("aria-hidden", "true"); r.append(bars);
+      const acts = ce("div", "rc-acts");
+      const use = ce("a", "rc-use", tr("المصدر الرسمي", "Official source"));
+      use.href = offer.sourceUrl; use.target = "_blank"; use.rel = "noopener noreferrer";
+      const share = ce("button", "rc-share", tr("شارك", "Share"));
+      share.type = "button";
+      share.onclick = () => shareReceipt(offer, share);
+      acts.append(use, share); r.append(acts);
+      return r;
+    }
+    function renderWalletFeed() {
+      const feed = els.receiptsFeed;
+      if (!feed) return;
+      let list = OFFERS_DATA.filter(o => getDaysLeft(o.expiryDate) >= 0 && walletMatches(o));
+      if (walletCat) list = list.filter(o => o.category === walletCat);
+      list = sortOffers(list, "excitement");
+      els.walletCount.textContent = list.length.toLocaleString(uiLang === "ar" ? "ar-EG" : "en-GB");
+      els.walletCount.setAttribute("aria-live", "polite");
+      feed.replaceChildren();
+      if (!list.length) {
+        feed.append(ce("div", "wempty", tr("مفيش عروض للاختيار ده. اختار بطاقات من فوق أو غيّر القسم.", "No offers for this selection. Choose a provider above or change category.")));
+        return;
+      }
+      list.forEach(o => {
+        const b = ce("button", "wallet-offer"); b.type = "button"; b.dataset.offerId = o.id;
+        const art = ce("span", "wallet-art " + o.category);
+        art.innerHTML = CATEGORY_IMAGES[o.category] || CATEGORY_IMAGES.general;
+        art.setAttribute("aria-hidden", "true");
+        const body = ce("span", "wallet-offer-body");
+        const title = ce("span", "wallet-offer-title", o.title); title.lang = "ar"; title.dir = "auto";
+        body.append(ce("span", "wallet-offer-status", tr("راجع شروط بطاقتك", "Check your card’s terms")), ce("span", "wallet-offer-value", o.value), title, ce("span", "wallet-note", o.providerName), ce("span", "wallet-offer-meta", tr("ينتهي ", "Until ") + fmtDate(o.expiryDate)), ce("span", "wallet-details", tr("شوف التفاصيل", "View details")));
+        b.append(art, body); b.onclick = () => openReceipt(o, b); feed.append(b);
+      });
+    }
+    function renderWalletAll() {
+      renderWalletCards();
+      renderWalletChips();
+      renderWalletFeed();
     }
 
     // ═══ 9. ELEMENT CACHE ═══
     function cacheElements() {
       els.lastUpdatedText = document.getElementById("lastUpdatedText");
       els.freshnessText = document.getElementById("freshnessText");
-      els.heroPills = document.getElementById("heroPills");
-      els.statsRow = document.getElementById("statsRow");
-      els.fuelBannerWrap = document.getElementById("fuelBannerWrap");
-      els.featuredScroll = document.getElementById("featuredScroll");
-      els.homeOffersGrid = document.getElementById("homeOffersGrid");
-      els.prepaidBanner = document.getElementById("prepaidBanner");
+      els.walletCards = document.getElementById("walletCards");
+      els.walletChips = document.getElementById("walletChips");
+      els.receiptsFeed = document.getElementById("receiptsFeed");
+      els.walletCount = document.getElementById("walletCount");
+      els.walletClearBtn = document.getElementById("walletClearBtn");
       els.offersGrid = document.getElementById("offersGrid");
       els.offersCountLabel = document.getElementById("offersCountLabel");
       els.emptyOffers = document.getElementById("emptyOffers");
@@ -2213,14 +2449,6 @@ const CATEGORY_IMAGES = {
       els.quickCategoryChips = document.getElementById("quickCategoryChips");
       els.clearFiltersBtn = document.getElementById("clearFiltersBtn");
       els.refreshBtn = document.getElementById("refreshBtn");
-      els.calcQuestions = document.getElementById("calcQuestions");
-      els.calcResult = document.getElementById("calcResult");
-      els.calcPhase1 = document.getElementById("calcPhase1");
-      els.calcPhase2 = document.getElementById("calcPhase2");
-      els.calcPhase3 = document.getElementById("calcPhase3");
-      els.calcPrepaidNote = document.getElementById("calcPrepaidNote");
-      els.calcCta = document.getElementById("calcCta");
-      els.paymentMapWrap = document.getElementById("paymentMapWrap");
       els.pageSections = document.querySelectorAll(".page-section");
       els.navItems = document.querySelectorAll(".nav-item");
       els.chipButtons = document.querySelectorAll("[data-chip-category]");
@@ -2243,9 +2471,10 @@ const CATEGORY_IMAGES = {
       document.querySelectorAll(`[data-action="save"][data-id="${CSS.escape(id)}"]`).forEach(btn => {
         const isSaved = savedIds.includes(id);
         btn.className = `save-btn ${isSaved ? "saved" : ""}`;
-        btn.textContent = isSaved ? "♥ محفوظ" : "♡ حفظ";
+        btn.textContent = isSaved ? tr("♥ محفوظ", "♥ Saved") : tr("♡ حفظ", "♡ Save");
       });
       renderSaved(true);
+      translateBrowseUI();
     }
     async function copyPromoCode(code, button) {
       if (!code) return;
@@ -2257,8 +2486,8 @@ const CATEGORY_IMAGES = {
           document.body.appendChild(ta); ta.focus(); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
         }
         const old = button.textContent;
-        button.textContent = "تم النسخ ✓";
-        showToast(`تم نسخ الكود: ${code}`, "success");
+        button.textContent = tr("تم النسخ ✓", "Copied");
+        showToast(tr(`تم نسخ الكود: ${code}`, `Code copied: ${code}`), "success");
         setTimeout(() => { button.textContent = old; }, 2000);
       } catch (e) { showToast("تعذر نسخ الكود", "error"); }
     }
@@ -2267,9 +2496,17 @@ const CATEGORY_IMAGES = {
       const text = card ? card.querySelector(".terms-text") : null;
       if (!text) return;
       const collapsed = text.classList.toggle("collapsed");
-      button.textContent = collapsed ? "▼ الشروط والأحكام" : "▲ إخفاء الشروط";
+      button.textContent = collapsed ? tr("▼ الشروط والأحكام", "▼ Terms and conditions") : tr("▲ إخفاء الشروط", "▲ Hide terms");
     }
     function showToast(msg, type = "success") {
+      const messages = {
+        'تم تحديث العروض ✓': 'Offers updated', 'العروض محدثة بالفعل': 'Offers are already up to date',
+        'تعذر تحديث العروض حالياً': 'Could not update offers; previous data kept',
+        'تم إزالة العرض من المحفوظات': 'Offer removed from saved', 'تم حفظ العرض ❤️': 'Offer saved ❤️',
+        'تعذر نسخ الكود': 'Could not copy code', 'تم تصفير الفلاتر': 'Filters cleared',
+        'ممتاز! سجّلنا انتصارك 🎉': 'Thanks for marking this offer as used', 'اتنسخ نص الانتصار ✓': 'Text copied'
+      };
+      if (uiLang === 'en') msg = messages[msg] || msg;
       document.querySelectorAll(".toast").forEach(t => t.remove());
       const toast = document.createElement("div");
       toast.className = `toast toast-${type}`;
@@ -2310,10 +2547,10 @@ const CATEGORY_IMAGES = {
       const offer = OFFERS_DATA.find(o => o.id === id);
       if (!offer) return;
       const amount = calcExcitement(offer) * 12;
-      const now = new Date().toLocaleDateString("ar-SA", { weekday:"long", year:"numeric", month:"long", day:"numeric" });
+      const now = new Date().toLocaleDateString(uiLang === 'en' ? 'en-GB' : 'ar-SA', { weekday:"long", year:"numeric", month:"long", day:"numeric" });
       const overlay = document.createElement("div");
       overlay.className = "victory-overlay";
-      overlay.innerHTML = `<div class="victory-card"><div class="victory-saved-label">انتصار صغير اليوم</div><div class="victory-amount">${amount} ريال</div><div class="victory-context">تقدير عائد محتمل من عرض ${escapeHTML(offer.providerName)} — ${now}</div><button class="victory-share-btn" data-victory-share="1" type="button">مشاركة الانتصار</button><button class="victory-share-btn signup-secondary" data-close-modal="1" type="button">إغلاق</button><canvas width="720" height="720" class="hidden"></canvas></div>`;
+      overlay.innerHTML = `<div class="victory-card"><div class="victory-saved-label">${tr('انتصار صغير اليوم','A small win today')}</div><div class="victory-amount">${amount} ${tr('ريال','SAR')}</div><div class="victory-context">${tr('تقدير عائد محتمل من عرض','Estimated potential benefit from')} ${escapeHTML(offer.providerName)} — ${now}</div><button class="victory-share-btn" data-victory-share="1" type="button">${tr('نسخ نص الانتصار','Copy win text')}</button><button class="victory-share-btn signup-secondary" data-close-modal="1" type="button">${tr('إغلاق','Close')}</button></div>`;
       document.body.appendChild(overlay);
     }
     function maybeShowSignupPrompt(force = false) {
@@ -2323,103 +2560,49 @@ const CATEGORY_IMAGES = {
       const overlay = document.createElement("div");
       overlay.className = "signup-overlay";
       const activeCount = OFFERS_DATA.filter(o => getDaysLeft(o.expiryDate) >= 0).length;
-      overlay.innerHTML = `<div class="signup-sheet"><h3 class="text-2xl font-black mb-3">خلّ عروضي عادة أسبوعية هادئة</h3><p class="text-white/80 font-bold leading-8">نتابع لك الآن ${activeCount.toLocaleString("ar-SA")} عرضاً سارياً من المصادر الرسمية. أضف الصفحة لشاشتك الرئيسية وارجع لها مرة بالأسبوع — بدون إشعارات ولا إزعاج.</p><div class="grid grid-cols-1 gap-2 mt-4"><button class="signup-btn" data-signup-dismiss="1" type="button">تمام</button></div></div>`;
+      overlay.innerHTML = `<div class="signup-sheet"><h3 class="text-2xl font-black mb-3">${tr('خلّ عروضي عادة أسبوعية هادئة','Make Oroodi a quiet weekly habit')}</h3><p class="text-white/80 font-bold leading-8">${tr(`نتابع لك الآن ${activeCount} عرضاً سارياً من المصادر الرسمية. أضف الصفحة لشاشتك الرئيسية وارجع لها مرة بالأسبوع — بدون إشعارات ولا إزعاج.`, `Browse ${activeCount} active offers from official sources. Add this page to your home screen and come back weekly — no notifications.`)}</p><div class="grid grid-cols-1 gap-2 mt-4"><button class="signup-btn" data-signup-dismiss="1" type="button">${tr('تمام','Got it')}</button></div></div>`;
       document.body.appendChild(overlay);
     }
     function bindEvents() {
       window.addEventListener("hashchange", handleHash);
       window.addEventListener("popstate", handleHash);
+      document.getElementById("languageBtn").addEventListener("click", () => {
+        uiLang = uiLang === "ar" ? "en" : "ar";
+        renderAll(false);
+      });
+      document.getElementById("walletAddBtn").addEventListener("click", () => {
+        els.walletCards.scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+        els.walletCards.querySelector("button")?.focus({ preventScroll: true });
+      });
+      if (els.walletClearBtn) els.walletClearBtn.addEventListener("click", () => {
+        walletAutoSelect = false;
+        walletPicked = walletProviders();
+        walletCat = "";
+        if (!writeJson(CARDS_KEY, walletPicked)) showToast(tr("الحفظ على الجهاز مش متاح.", "Device storage is unavailable."), "info");
+        renderWalletAll();
+      });
       document.body.addEventListener("click", e => {
         const actionTarget = e.target.closest("[data-action]");
         if (actionTarget) {
           const action = actionTarget.dataset.action;
+          if (action === "details") {
+            const offer = OFFERS_DATA.find(o => o.id === actionTarget.dataset.id);
+            if (offer) openReceipt(offer, actionTarget);
+          }
           if (action === "save") toggleSave(actionTarget.dataset.id);
           if (action === "copy") copyPromoCode(actionTarget.dataset.code, actionTarget);
           if (action === "toggle-terms") toggleTerms(actionTarget);
           if (action === "used-it") markAsUsed(actionTarget.dataset.id, actionTarget);
           return;
         }
-        const calcBtn = e.target.closest("[data-calc-key]");
-        if (calcBtn) {
-          calcState[calcBtn.dataset.calcKey] = calcBtn.dataset.value;
-          PREPAID_MODE = calcState.payment === "no_credit";
-          renderCalculator();
-          completeCalculator();
-          return;
-        }
-        if (e.target.closest("#calcCta")) {
-          const cat = preferredCategoriesFromCalc()[0] || "general";
-          FILTER.category = cat;
-          if (PREPAID_MODE) FILTER.provider = "";
-          setHashWithFilter("offers");
-          handleHash();
-          return;
-        }
-        if (e.target.closest("#fuelBannerBtn")) {
-          FILTER.category = "fuel";
-          resetMemo();
-          syncFilterControls();
-          updateActiveChips();
-          const next = buildHash("offers");
-          if (window.location.hash !== next) window.location.hash = next;
-          else handleHash();
-          return;
-        }
         if (e.target.closest("[data-close-modal]")) { e.target.closest(".victory-overlay")?.remove(); return; }
         if (e.target.closest('[data-victory-share]')) {
           const overlay = e.target.closest('.victory-overlay');
-          const canvas = overlay.querySelector('canvas');
-          const amount = overlay.querySelector('.victory-amount').textContent;
-          const ctx = canvas.getContext('2d');
-          canvas.width = 720; canvas.height = 720;
-
-          // Background
-          ctx.fillStyle = '#1B5E3F';
-          ctx.beginPath();
-          ctx.roundRect(0,0,720,720,40);
-          ctx.fill();
-
-          // Gold shimmer overlay
-          const grd = ctx.createLinearGradient(0,0,720,720);
-          grd.addColorStop(0, 'rgba(184,134,11,0.12)');
-          grd.addColorStop(1, 'rgba(0,0,0,0)');
-          ctx.fillStyle = grd;
-          ctx.fillRect(0,0,720,720);
-
-          // Top label
-          ctx.fillStyle = 'rgba(255,255,255,0.75)';
-          ctx.font = '700 36px Cairo, Arial';
-          ctx.textAlign = 'center';
-          ctx.fillText('انتصار صغير اليوم', 360, 240);
-
-          // Amount
-          ctx.fillStyle = '#F5DFA0';
-          ctx.font = '900 160px Cairo, Arial';
-          ctx.textAlign = 'center';
-          ctx.fillText(amount, 360, 420);
-
-          // Date
-          const dateStr = new Date().toLocaleDateString('ar-SA');
-          ctx.fillStyle = 'rgba(255,255,255,0.5)';
-          ctx.font = '600 28px Cairo, Arial';
-          ctx.fillText(dateStr, 360, 490);
-
-          // via text
-          ctx.fillStyle = 'rgba(255,255,255,0.25)';
-          ctx.font = '600 22px Cairo, Arial';
-          ctx.fillText('via عروضي', 360, 680);
-
-          // Download
-          const link = document.createElement('a');
-          link.download = 'oroodi-victory.png';
-          link.href = canvas.toDataURL('image/png');
-          link.click();
-
-          showToast('تم حفظ بطاقة انتصارك ✓', 'success');
+          const amount = overlay?.querySelector('.victory-amount')?.textContent || "";
+          navigator.clipboard?.writeText(`انتصار صغير اليوم: ${amount} — via عروضي`).then(() => showToast("اتنسخ نص الانتصار ✓", "success")).catch(() => {});
           return;
         }
         if (e.target.closest("[data-signup-dismiss]")) { writeJson(SIGNUP_KEY, 1); e.target.closest(".signup-overlay")?.remove(); return; }
-        
       });
       let _searchTimer;
       if (els.searchInput) els.searchInput.addEventListener("input", event => { FILTER.search = event.target.value; clearTimeout(_searchTimer); _searchTimer = setTimeout(afterFilterChange, 300); });
@@ -2437,7 +2620,7 @@ const CATEGORY_IMAGES = {
         if (els.refreshBtn.disabled) return;
         const originalText = els.refreshBtn.textContent;
         els.refreshBtn.disabled = true;
-        els.refreshBtn.textContent = "جاري...";
+        els.refreshBtn.textContent = tr("جاري...", "Refreshing…");
         els.refreshBtn.style.opacity = "0.6";
         await fetchAndUpdate(true);
         els.refreshBtn.disabled = false;
@@ -2447,10 +2630,14 @@ const CATEGORY_IMAGES = {
       setTimeout(() => maybeShowSignupPrompt(false), 30000);
     }
     function init() {
+      document.body.classList.add("brand-night");
       cacheElements();
       bindEvents();
       if (!window.location.hash) history.replaceState(null, "", "#home");
       savedIds = readJson(SAVED_KEY, []);
+      const storedCards = readJson(CARDS_KEY, null);
+      walletAutoSelect = !Array.isArray(storedCards);
+      walletPicked = Array.isArray(storedCards) ? storedCards.filter(x => typeof x === "string") : [];
       applyHashFilters();
       loadData();
       loadMerchantAliases().then(() => renderAll(false));

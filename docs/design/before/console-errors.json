@@ -1,0 +1,12 @@
+{
+  "mobile": {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (File not found)"
+    ],
+    "viewport": "390x844"
+  },
+  "desktop": {
+    "consoleErrors": [],
+    "viewport": "1280x900"
+  }
+}

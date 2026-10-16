@@ -1,0 +1,10 @@
+{
+  "mobile": {
+    "consoleErrors": [],
+    "viewport": "390x844"
+  },
+  "desktop": {
+    "consoleErrors": [],
+    "viewport": "1280x900"
+  }
+}
