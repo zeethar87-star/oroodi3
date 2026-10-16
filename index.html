@@ -924,15 +924,15 @@
           <button id="walletClearBtn" class="wchip" type="button" aria-pressed="false">الكل</button>
         </div>
         <div class="wcards" id="walletCards"></div>
-        <p class="wallet-note">دوس على البطاقات اللي معاك. من غير أرقام ولا بيانات — النوع بس، وبتتحفظ على جهازك.</p>
+        <p class="wallet-note">اختار البنك أو المحفظة. الاختيار بيتحفظ على جهازك بس، من غير أرقام بطاقات.</p>
       </section>
 
       <div class="wchips" id="walletChips" role="group" aria-label="الأقسام"></div>
 
       <section aria-label="العروض المناسبة لبطاقاتك" style="display:grid;gap:12px">
-        <div class="wcount"><b id="walletCount">0</b><span class="wallet-note">عرض ينطبق على بطاقاتك</span></div>
+        <div class="wcount"><b id="walletCount">0</b><span class="wallet-note">عرض من البنوك والمحافظ اللي اخترتها</span></div>
         <div class="receipts" id="receiptsFeed"></div>
-        <a id="walletAllOffers" class="rc-share" style="display:block;text-align:center;border-radius:8px;padding:10px;text-decoration:none" href="#offers">شوف كل العروض بالفلاتر</a>
+        <a id="walletAllOffers" class="rc-share" style="display:block;text-align:center;border-radius:8px;padding:10px;text-decoration:none" href="#offers">كل العروض والفلاتر</a>
       </section>
 
       <button id="walletAddBtn" class="wallet-add" type="button">+ اختار بطاقاتك</button>
@@ -1019,7 +1019,7 @@
     </section>
 
     <div class="freshness-bar">
-      آخر تحديث: <span id="freshnessText">...</span> — نتحقق كل 6 ساعات
+      آخر تحديث: <span id="freshnessText">...</span> — الصفحة بتجيب آخر نسخة من العروض كل ساعة
     </div>
   </main>
 
@@ -1935,13 +1935,13 @@ const CATEGORY_IMAGES = {
           writeJson(CACHE_KEY, fresh);
           setData(fresh);
           renderAll(true);
-          showToast("تم تحديث العروض ✓", "success");
+          showToast(tr("تم تحديث العروض ✓", "Offers updated ✓"), "success");
           return true;
         }
-        if (manual) showToast("العروض محدثة بالفعل", "info");
+        if (manual) showToast(tr("العروض محدثة بالفعل", "Offers are already up to date"), "info");
         return false;
       } catch (e) {
-        showToast("تعذر تحديث العروض حالياً", "error");
+        showToast(tr("تعذر تحديث العروض حالياً", "Couldn’t refresh offers right now"), "error");
         return false;
       }
     }
@@ -2247,7 +2247,7 @@ const CATEGORY_IMAGES = {
       Object.entries(attrs).forEach(([selector,words]) => { document.querySelector(selector)?.setAttribute('aria-label',tr(...words)); });
       const bar = document.querySelector('.freshness-bar');
       bar.firstChild.textContent = tr('آخر تحديث: ', 'Updated: ');
-      bar.lastChild.textContent = tr(' — محاولة تحديث كل ساعة', ' — refresh attempted hourly');
+      bar.lastChild.textContent = tr(' — الصفحة بتجيب آخر نسخة من العروض كل ساعة', ' — this page reloads the offer list hourly');
     }
     function translateWalletUI() {
       translateBrowseUI();
@@ -2261,7 +2261,7 @@ const CATEGORY_IMAGES = {
       document.getElementById("languageBtn").lang = tr("en", "ar");
       document.querySelector("#page-home .wsection-title").textContent = tr("بطاقاتي", "My cards");
       document.querySelector("#page-home section .wallet-note").textContent = tr("اختار البنك أو المحفظة. الاختيار بيتحفظ على جهازك بس، من غير أرقام بطاقات.", "Choose your bank or wallet. Selection stays on this device only. No card numbers.");
-      document.querySelector(".wcount .wallet-note").textContent = tr("عرض من مزودين بطاقاتك", "offers from your selected providers");
+      document.querySelector(".wcount .wallet-note").textContent = tr("عرض من البنوك والمحافظ اللي اخترتها", "offers from the banks and wallets you chose");
       document.getElementById("walletAllOffers").textContent = tr("كل العروض والفلاتر", "All offers and filters");
       document.getElementById("walletAddBtn").textContent = tr("+ اختار بطاقاتك", "+ Choose your cards");
       document.getElementById("refreshBtn").textContent = tr("تحديث", "Refresh");
@@ -2324,7 +2324,7 @@ const CATEGORY_IMAGES = {
         b.type = "button";
         b.dataset.provider = name;
         b.setAttribute("aria-pressed", String(walletPicked.includes(name)));
-        b.setAttribute("aria-label", tr("بطاقة ", "Card: ") + name);
+        b.setAttribute("aria-label", tr("بطاقة من ", "Card from ") + name);
         b.append(ce("span", "card-chip"), ce("b", "", name), ce("small", "", tr("اختيار المزود", "Provider selection")), ce("span", "wtick", "✓"));
         b.onclick = () => toggleWalletCard(name);
         wrap.append(b);
@@ -2377,12 +2377,12 @@ const CATEGORY_IMAGES = {
       const desc = ce("p", "rc-description", offer.description);
       const terms = ce("p", "rc-terms", offer.terms);
       desc.lang = terms.lang = "ar"; desc.dir = terms.dir = "auto";
-      r.append(desc, ce("h3", "", tr("الشروط والأحكام", "Terms and conditions")), terms);
-      if (uiLang === "en") r.append(ce("p", "source-language-note", "Offer wording is retained in its source language (Arabic)."));
+      r.append(desc, ce("h3", "", tr("ملخص الشروط", "Terms summary")), terms);
+      if (uiLang === "en") r.append(ce("p", "source-language-note", "Offer details are shown in Arabic. The provider page has the full wording."));
       r.append(ce("div", "rc-why", tr("اختيار البنك مش ضمان أهلية البطاقة. راجع النوع والحدود والاستثناءات في المصدر.", "Selecting a provider does not guarantee card eligibility. Check card type, limits and exclusions at the source.")));
       const bars = ce("div", "rc-bars"); bars.setAttribute("aria-hidden", "true"); r.append(bars);
       const acts = ce("div", "rc-acts");
-      const use = ce("a", "rc-use", tr("المصدر الرسمي", "Official source"));
+      const use = ce("a", "rc-use", tr("صفحة العرض عند المزود", "Provider’s offer page"));
       use.href = offer.sourceUrl; use.target = "_blank"; use.rel = "noopener noreferrer";
       const share = ce("button", "rc-share", tr("شارك", "Share"));
       share.type = "button";
