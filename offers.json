@@ -38,7 +38,7 @@
     {
       "id": "sab-dining-001",
       "title": "خصم 10% لدى وكف",
-      "description": "خصم 10% لدى وكف ببطاقات الأول الائتمانية ومدى.",
+      "description": "خصم 10% لدى وكف ببطاقات الأول الائتمانية ومدى، بإدخال الرمز SAB10 قبل الدفع على موقع وكف.",
       "providerName": "البنك السعودي الأول",
       "providerType": "bank",
       "offerType": "discount",
@@ -48,15 +48,15 @@
         "mada"
       ],
       "expiryDate": "2027-06-20",
-      "sourceUrl": "https://www.sab.com/ar/personal/compare-credit-cards/credit-card-special-offers/all-offers/",
-      "terms": "يسري من 20 يونيو 2026 حتى 20 يونيو 2027. البطاقات المؤهلة: بطاقات الأول الائتمانية ومدى. التفاصيل من قائمة العروض الرسمية؛ طريقة الدفع والحد الأعلى غير مذكورين فيها.",
-      "promoCode": null,
+      "sourceUrl": "https://www.sab.com/ar/personal/compare-credit-cards/credit-card-special-offers/dining-groceries/wacafe-tc/",
+      "terms": "يسري من 20 يونيو 2026 حتى 20 يونيو 2027. البطاقات المؤهلة: بطاقات الأول الائتمانية ومدى. أدخل الرمز SAB10 قبل الدفع على موقع وكف الإلكتروني. لا حد أدنى ولا حد أعلى للخصم. لا يشمل منتجات Thrr. لا يسري عند الدفع بأبل باي أو مدى باي أو سامسونج باي أو جوجل باي. لا يُجمع مع قسائم أو رموز أو عروض أخرى.",
+      "promoCode": "SAB10",
       "merchantName": "وكف"
     },
     {
       "id": "sab-dining-002",
       "title": "خصم 12% لدى بيت الشاورما",
-      "description": "خصم 12% لدى بيت الشاورما ببطاقات الأول الائتمانية ومدى.",
+      "description": "خصم 12% لدى بيت الشاورما ببطاقات الأول الائتمانية ومدى، بإدخال الرمز SABSH على الموقع أو التطبيق قبل الدفع.",
       "providerName": "البنك السعودي الأول",
       "providerType": "bank",
       "offerType": "discount",
@@ -66,9 +66,9 @@
         "mada"
       ],
       "expiryDate": "2027-08-09",
-      "sourceUrl": "https://www.sab.com/ar/personal/compare-credit-cards/credit-card-special-offers/all-offers/",
-      "terms": "يسري من 1 يونيو 2026 حتى 9 أغسطس 2027. البطاقات المؤهلة: بطاقات الأول الائتمانية ومدى. التفاصيل من قائمة العروض الرسمية؛ طريقة الدفع والحد الأعلى غير مذكورين فيها.",
-      "promoCode": null,
+      "sourceUrl": "https://www.sab.com/ar/personal/compare-credit-cards/credit-card-special-offers/dining-groceries/shawarma-house-tc/",
+      "terms": "يسري من 1 يونيو 2026 حتى 9 أغسطس 2027. البطاقات المؤهلة: بطاقات الأول الائتمانية ومدى. أدخل الرمز SABSH على موقع بيت الشاورما الإلكتروني أو التطبيق قبل الدفع. لا حد أدنى ولا حد أعلى للخصم. لا يسري عند الدفع بأبل باي أو مدى باي أو سامسونج باي. لا يُجمع مع قسائم أو رموز أو عروض أخرى.",
+      "promoCode": "SABSH",
       "merchantName": "بيت الشاورما"
     },
     {
@@ -433,7 +433,9 @@
       "offerType": "discount",
       "value": "حتى 10%",
       "category": "shopping",
-      "compatibleWith": [],
+      "compatibleWith": [
+        "mada"
+      ],
       "expiryDate": "2026-12-31",
       "sourceUrl": "https://www.urpay.com.sa/ar/urpay-offers/mag",
       "terms": "لبطاقات urpay فقط مع كود URPAY. منتجات Cartier غير مشمولة. يمكن الاستفادة أكثر من مرة. لا يُجمع مع عروض أو خصومات أخرى.",
@@ -487,8 +489,8 @@
         "mada"
       ],
       "expiryDate": "2027-06-25",
-      "sourceUrl": "https://www.sab.com/ar/personal/compare-credit-cards/credit-card-special-offers/all-offers/",
-      "terms": "يسري من 25 يونيو 2026 حتى 25 يونيو 2027. البطاقات المؤهلة: بطاقات الأول الائتمانية ومدى. التفاصيل من قائمة العروض الرسمية؛ طريقة الدفع والحد الأعلى غير مذكورين فيها.",
+      "sourceUrl": "https://www.sab.com/ar/personal/compare-credit-cards/credit-card-special-offers/shopping/la-z-boy-tc/",
+      "terms": "يسري من 25 يونيو 2026 حتى 25 يونيو 2027. البطاقات المؤهلة: بطاقات الأول الائتمانية ومدى. اطلب الخصم وادفع بالبطاقة نفسها. لا حد أدنى ولا حد أعلى للخصم. لا يسري عند الدفع بأبل باي أو مدى باي أو سامسونج باي أو جوجل باي. لا يُجمع مع قسائم أو رموز أو عروض أخرى.",
       "promoCode": null,
       "merchantName": "ليزي بوي"
     },
