@@ -106,7 +106,7 @@ def fetch(url: str) -> tuple[str | None, str | None]:
         # urllib لا يفك الضغط؛ بعض المواقع ترجّع gzip حتى لو لم نطلبه (أحياناً بلا هيدر)
         if encoding in ("gzip", "x-gzip", "deflate") or raw[:2] == b"\x1f\x8b":
             try:
-                raw = zlib.decompressobj(47).decompress(raw)  # 47 = يتعرف على gzip وzlib تلقائياً
+                raw = zlib.decompressobj(47).decompress(raw, 10_000_000)  # 47 = gzip أو zlib تلقائياً؛ سقف ضد قنبلة الضغط
             except zlib.error:
                 pass  # هيدر غلط والجسم غير مضغوط: نكمل بالخام
         text = html_to_text(raw.decode(charset, errors="replace"))

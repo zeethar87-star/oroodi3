@@ -43,6 +43,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main() -> int:
+    sys.stdout.reconfigure(encoding="utf-8")  # كونسول ويندوز الافتراضي ما يطبعش ✅/❌
     server = HTTPServer(("127.0.0.1", 0), Handler)
     threading.Thread(target=server.serve_forever, daemon=True).start()
     failed = False
