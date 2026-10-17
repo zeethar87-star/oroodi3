@@ -1,10 +1,12 @@
-"""فحص شامل قبل أي دمج: السكيما، القاموس، ومطابقة البيانات الاحتياطية داخل الصفحة.
+"""فحص شامل قبل أي دمج: السكيما، القاموس، ومطابقة البيانات الاحتياطية داخل الصفحة،
+وفحص الخصوصية (أسرار، مسارات محلية، ملفات .env، إيميلات غير noreply) على الملفات المتتبعة.
 
 الاستخدام:  python scripts/validate.py
 يخرج برمز 1 عند أي خطأ، فيوقف طلب الدمج في GitHub تلقائياً.
 """
 import sys
 
+import privacy_scan
 from oroodi_lib import (MERCHANTS_PATH, OFFERS_PATH, MerchantBook, inline_fallback,
                         load_json, validate_offer, validate_payload)
 
@@ -38,6 +40,9 @@ def main() -> int:
             errors += [f"INLINE_FALLBACK → {e}" for e in validate_offer(o, book)]
         if fb != payload.get("offers"):
             errors.append("INLINE_FALLBACK داخل index.html لا يطابق offers.json — شغّل: python scripts/sync_fallback.py")
+
+    # فحص الخصوصية جزء من الفحص الإلزامي، فيشتغل في كل طلب دمج عبر «فحص الجودة»
+    errors += [f"الخصوصية → {p}" for p in privacy_scan.scan()]
 
     if errors:
         print("❌ أخطاء:")

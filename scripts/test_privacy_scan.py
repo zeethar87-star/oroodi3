@@ -77,6 +77,16 @@ def main() -> int:
     # 4) ملفات المستودع الحالية لازم تعدّي
     expect(privacy_scan.main([]) == 0, "يعدّي على ملفات المستودع الحالية")
 
+    # 5) validate.py (اللي بيشتغل في CI مع كل طلب دمج) لازم يفشل لو الفحص لقى مشكلة
+    import validate  # noqa: E402
+    original = privacy_scan.scan
+    try:
+        privacy_scan.scan = lambda root=None: ["fake.md:1: مفتاح وهمي"]
+        expect(validate.main() == 1, "validate.py يفشل لما فحص الخصوصية يلاقي مشكلة")
+    finally:
+        privacy_scan.scan = original
+    expect(validate.main() == 0, "validate.py يعدّي على ملفات المستودع الحالية")
+
     if expect.failed:
         print("❌ اختبار فحص الخصوصية فشل")
         return 1
