@@ -24,6 +24,7 @@ import re
 import sys
 import urllib.error
 import urllib.request
+import zlib
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -101,6 +102,13 @@ def fetch(url: str) -> tuple[str | None, str | None]:
         with urllib.request.urlopen(req, timeout=30) as r:
             raw = r.read(3_000_000)
             charset = r.headers.get_content_charset() or "utf-8"
+            encoding = (r.headers.get("Content-Encoding") or "").lower()
+        # urllib لا يفك الضغط؛ بعض المواقع ترجّع gzip حتى لو لم نطلبه (أحياناً بلا هيدر)
+        if encoding in ("gzip", "x-gzip", "deflate") or raw[:2] == b"\x1f\x8b":
+            try:
+                raw = zlib.decompressobj(47).decompress(raw)  # 47 = يتعرف على gzip وzlib تلقائياً
+            except zlib.error:
+                pass  # هيدر غلط والجسم غير مضغوط: نكمل بالخام
         text = html_to_text(raw.decode(charset, errors="replace"))
         if len(text) < 200:
             return None, "الصفحة رجعت محتوى شبه فارغ (غالباً تُبنى بجافاسكربت أو محجوبة)"
