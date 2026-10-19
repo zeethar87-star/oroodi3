@@ -24,6 +24,7 @@ import re
 import sys
 import urllib.error
 import urllib.request
+import zlib
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -101,6 +102,29 @@ def fetch(url: str) -> tuple[str | None, str | None]:
         with urllib.request.urlopen(req, timeout=30) as r:
             raw = r.read(3_000_000)
             charset = r.headers.get_content_charset() or "utf-8"
+            encoding = (r.headers.get("Content-Encoding") or "").lower()
+        # urllib لا يفك الضغط؛ بعض المواقع ترجّع gzip حتى لو الطلب ما طلبش ضغط (أحياناً بلا هيدر)
+        if encoding in ("gzip", "x-gzip", "deflate") or raw[:2] == b"\x1f\x8b":
+            # فك كل أعضاء gzip المتعددة (multi-member) الموصولة ورا بعض — مسموح رسمياً
+            # في المواصفة — تحت سقف 10 ميجا واحد للمجموع ضد قنابل الضغط. فشل أول عضو
+            # والقائمة فاضية = هيدر غلط والجسم غير مضغوط فنكمل بالخام؛ وخطأ في عضو
+            # لاحق (بيانات زائدة أو تالفة بعد عضو سليم) بنكتفي فيه بما انفك حتى الآن.
+            out: list[bytes] = []
+            budget = 10_000_000
+            data = raw
+            while data:
+                try:
+                    d = zlib.decompressobj(47)  # 47 = gzip أو zlib تلقائياً
+                    chunk = d.decompress(data, budget)
+                except zlib.error:
+                    break
+                out.append(chunk)
+                budget -= len(chunk)
+                if budget <= 0:
+                    break
+                data = d.unused_data
+            if out:
+                raw = b"".join(out)
         text = html_to_text(raw.decode(charset, errors="replace"))
         if len(text) < 200:
             return None, "الصفحة رجعت محتوى شبه فارغ (غالباً تُبنى بجافاسكربت أو محجوبة)"
