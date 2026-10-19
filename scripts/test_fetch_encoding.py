@@ -17,6 +17,11 @@ import extract_offers  # noqa: E402
 MARKER = "خصم 20% على بطاقات الأهلي"
 HTML = ("<html><body><p>" + (MARKER + " — ") * 20 + "</p></body></html>").encode("utf-8")
 
+# ملفان gzip ورا بعض (multi-member): مسموح رسمياً في مواصفة gzip. العضو الثاني بمحتوى
+# مختلف عشان يبين غيابه لو fetch وقف عند العضو الأول (ملاحظة المراجعة المستقلة على الـ PR).
+MARKER2 = "نقاط مضاعفة على الوقود"
+HTML2 = ("<html><body><p>" + (MARKER2 + " — ") * 20 + "</p></body></html>").encode("utf-8")
+
 # اسم الحالة → (جسم الاستجابة، قيمة Content-Encoding أو None)
 CASES = {
     "gzip": (gzip.compress(HTML), "gzip"),
@@ -24,7 +29,11 @@ CASES = {
     "plain": (HTML, None),
     "gzip_missing_header": (gzip.compress(HTML), None),
     "plain_wrong_header": (HTML, "gzip"),
+    "gzip_two_members": (gzip.compress(HTML) + gzip.compress(HTML2), "gzip"),
 }
+
+# علامة إضافية لازم تظهر في نص الحالة (العضو الثاني من ملف gzip المتعدد)
+EXTRA_MARKERS = {"gzip_two_members": MARKER2}
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -51,6 +60,9 @@ def main() -> int:
         for name in CASES:
             text, err = extract_offers.fetch(f"http://127.0.0.1:{server.server_port}/{name}")
             ok = err is None and text is not None and MARKER in text
+            extra = EXTRA_MARKERS.get(name)
+            if extra:
+                ok = ok and text is not None and extra in text
             print(("  ✅ " if ok else "  ❌ ") + f"{name}: err={err!r}")
             failed |= not ok
     finally:
