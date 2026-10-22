@@ -1,14 +1,12 @@
 {
-  "lastCheck": "2026-10-16T17:22:41Z",
-  "checkedDateRiyadh": "2026-10-16",
-  "activeOffers": 41,
-  "removedThisRun": [],
-  "withMerchant": 38,
+  "lastCheck": "2026-10-22T08:30:28Z",
+  "checkedDateRiyadh": "2026-10-22",
+  "activeOffers": 47,
+  "removedThisRun": [
+    "stcbank-shopping-012"
+  ],
+  "withMerchant": 44,
   "nextToExpire": [
-    {
-      "id": "stcbank-shopping-012",
-      "expiryDate": "2026-10-19"
-    },
     {
       "id": "snb-amazon-prime-2027-01-14",
       "expiryDate": "2026-10-30"
@@ -23,6 +21,10 @@
     },
     {
       "id": "d360-shopping-001",
+      "expiryDate": "2026-10-31"
+    },
+    {
+      "id": "d360-shopping-003",
       "expiryDate": "2026-10-31"
     }
   ],

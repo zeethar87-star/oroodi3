@@ -165,6 +165,23 @@
       "promoCode": null,
       "merchantName": "إل باريتو",
       "_archivedOn": "2026-09-29"
+    },
+    {
+      "id": "stcbank-shopping-012",
+      "title": "خصم 75% على خدمات إصلاحات السيارات من مسمار",
+      "description": "سلامتك تهمّنا، نقدّم لك خصم 75% من تطبيق مسمار باستخدام جميع بطاقات STC Bank.",
+      "providerName": "STC Bank",
+      "providerType": "bank",
+      "offerType": "discount",
+      "value": "75%",
+      "category": "shopping",
+      "compatibleWith": [],
+      "expiryDate": "2026-10-19",
+      "sourceUrl": "https://stcbank.com.sa/web/guest/offers",
+      "terms": "يسري من تطبيق مسمار باستخدام جميع بطاقات STC Bank.",
+      "promoCode": null,
+      "merchantName": "مسمار",
+      "_archivedOn": "2026-10-22"
     }
   ]
 }

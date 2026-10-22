@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-17T09:27:17Z",
+  "lastUpdated": "2026-10-22T08:30:28Z",
   "offers": [
     {
       "id": "stcbank-dining-002",
@@ -242,20 +242,22 @@
       "merchantName": "نو رومينق"
     },
     {
-      "id": "stcbank-shopping-012",
-      "title": "خصم 75% على خدمات إصلاحات السيارات من مسمار",
-      "description": "سلامتك تهمّنا، نقدّم لك خصم 75% من تطبيق مسمار باستخدام جميع بطاقات STC Bank.",
-      "providerName": "STC Bank",
+      "id": "snb-amazon-prime-2027-01-14",
+      "title": "أمازون برايم + 15% خصم تسوق",
+      "description": "عضوية Amazon Prime ومزايا خصم تسوق دورية عند استخدام بطاقات الأهلي من ماستركارد.",
+      "providerName": "البنك الأهلي السعودي",
       "providerType": "bank",
       "offerType": "discount",
-      "value": "75%",
+      "value": "15%",
       "category": "shopping",
-      "compatibleWith": [],
-      "expiryDate": "2026-10-19",
-      "sourceUrl": "https://stcbank.com.sa/web/guest/offers",
-      "terms": "يسري من تطبيق مسمار باستخدام جميع بطاقات STC Bank.",
+      "compatibleWith": [
+        "mastercard"
+      ],
+      "expiryDate": "2026-10-30",
+      "sourceUrl": "https://www.alahli.com/en/pages/personal-banking/credit-cards/credit-card-promotions",
+      "terms": "يسري من 14 يناير 2026 حتى 30 أكتوبر 2026. تذكر صفحة العروض عضوية Amazon Prime حتى 6 أشهر، وخصم 15% حتى 50 ريال كل 30 يوماً ولمدة تصل إلى 4 أشهر، عند استخدام بطاقات SNB Credit أو Debit من Mastercard.",
       "promoCode": null,
-      "merchantName": "مسمار"
+      "merchantName": "أمازون"
     },
     {
       "id": "alrajhi-shopping-001",
@@ -441,24 +443,6 @@
       "terms": "لبطاقات urpay فقط مع كود URPAY. منتجات Cartier غير مشمولة. يمكن الاستفادة أكثر من مرة. لا يُجمع مع عروض أو خصومات أخرى.",
       "promoCode": "URPAY",
       "merchantName": "مغربي"
-    },
-    {
-      "id": "snb-amazon-prime-2027-01-14",
-      "title": "أمازون برايم + 15% خصم تسوق",
-      "description": "عضوية Amazon Prime ومزايا خصم تسوق دورية عند استخدام بطاقات الأهلي من ماستركارد.",
-      "providerName": "البنك الأهلي السعودي",
-      "providerType": "bank",
-      "offerType": "discount",
-      "value": "15%",
-      "category": "shopping",
-      "compatibleWith": [
-        "mastercard"
-      ],
-      "expiryDate": "2026-10-30",
-      "sourceUrl": "https://www.alahli.com/en/pages/personal-banking/credit-cards/credit-card-promotions",
-      "terms": "يسري من 14 يناير 2026 حتى 30 أكتوبر 2026. تذكر صفحة العروض عضوية Amazon Prime حتى 6 أشهر، وخصم 15% حتى 50 ريال كل 30 يوماً ولمدة تصل إلى 4 أشهر، عند استخدام بطاقات SNB Credit أو Debit من Mastercard.",
-      "promoCode": null,
-      "merchantName": "أمازون"
     },
     {
       "id": "stcbank-shopping-018",
